@@ -130,9 +130,6 @@ def send_message(recipient_id, message_text):
                                 "title":"Balance Check",
                                 "payload":"balance_check"
                               },
-                               {
-                                "title":"Simple loan Dollar"
-                              },
                               {
                                 "type":"postback",
                                 "title":"Transaction History",
