@@ -728,7 +728,7 @@ def send_message(recipient_id, message_text):
                           {
                             "type":"postback",
                             "title":" $100",
-                            "payload":"loan_amount_100"
+                            "payload":"amount100"
                           }
                         ]
                      }
@@ -738,7 +738,7 @@ def send_message(recipient_id, message_text):
             }
         })
             
-       elif "loan_amount_100" in message_text:
+       elif "amount100" in message_text:
         data = json.dumps({
             "recipient": {
                 "id": recipient_id
@@ -796,8 +796,8 @@ def process_message(text,sender_id):
                         output="balance_check" 
                     elif(w.lower()=='loan'):
                         output="loan" 
-                    elif(w.lower()=='loan_amount_100'):
-                        output="loan_amount_100"     
+                    elif(w.lower()=='amount100'):
+                        output="amount100"     
                     elif(w.lower()=='histori' or w.lower()=='transact'):
                         if 'cancel' in str(words).lower():
                             output="transaction_receipt"
