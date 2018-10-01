@@ -795,6 +795,8 @@ def process_message(text,sender_id):
                         output="balance_check" 
                     elif(w.lower()=='loan'):
                         output="loan" 
+                    elif(w.lower()=='loan_amount_100'):
+                        output="loan_amount_100"     
                     elif(w.lower()=='histori' or w.lower()=='transact'):
                         if 'cancel' in str(words).lower():
                             output="transaction_receipt"
