@@ -143,7 +143,7 @@ def send_message(recipient_id, message_text):
                               {
                                 "type":"postback",
                                 "title":"Loan",
-                                "payload":"card_operations"
+                                "payload":"loan"
                               }                                 
                             ]
                         },
@@ -700,6 +700,16 @@ def send_message(recipient_id, message_text):
                 "text": "Incorrect message"
             }
         })
+        
+     elif "loan" in message_text:
+        data = json.dumps({
+            "recipient": {
+                "id": recipient_id
+            },
+            "message": {
+                "text": "sdl loan"
+            }
+        })
 
     else:
         data = json.dumps({
@@ -745,7 +755,9 @@ def process_message(text,sender_id):
                     elif(w.lower()=='activat'):
                         output="Card has been Activated"
                     elif(w.lower()=='balanc' or w.lower()=='summari'):
-                        output="balance_check"                   
+                        output="balance_check" 
+                    elif(w.lower()=='loan'):
+                        output="loan" 
                     elif(w.lower()=='histori' or w.lower()=='transact'):
                         if 'cancel' in str(words).lower():
                             output="transaction_receipt"
@@ -781,6 +793,8 @@ def ProcessAPIAIResponse(strResponse):
             return "balance_check"
         if "APIAITransaction" in action:
             return "transaction_history"
+        if "APIAILoan" in action:
+            return "loan"
         return ""
     else:
         return ""
