@@ -716,23 +716,8 @@ def send_message(recipient_id, message_text):
             "recipient": {
                 "id": recipient_id
             },
-            "message": {
-                "attachment":{
-                  "type":"template",
-                  "payload":{
-                    "template_type":"button",
-                    "text":"Select one option",
-                    "buttons":[
-                      {
-                        "type":"postback",
-                        "title":" 100"
-                      }, 
-                       {
-                        "type":"postback",
-                        "title":" 200"
-                      }]
-                  }
-                }
+           "message": {
+                "text": "loan amount"
             }
         })    
     print data
