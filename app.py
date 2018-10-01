@@ -140,11 +140,11 @@ def send_message(recipient_id, message_text):
                                 "title":"Card Operations",
                                 "payload":"card_operations"
                               },
-                               {
+                              {
                                 "type":"postback",
-                                "title":"Balance Check",
-                                "payload":"balance_check"
-                              }
+                                "title":"Loan",
+                                "payload":"card_operations"
+                              }                                 
                             ]
                         },
                         {
@@ -165,17 +165,7 @@ def send_message(recipient_id, message_text):
                                 "title":"Connect Me",
                                 "payload":"live_agent_connect"
                               }]
-                        },
-                         {
-                            "title":"Connect with Live Agent",
-                            "subtitle":"A live agent will assist you for your queries",
-                            "buttons":[
-                              {
-                                "type":"postback",
-                                "title":"Connect Me",
-                                "payload":"live_agent_connect"
-                              }]
-                        }
+                        },                         
                     ]
                   }
                 }
