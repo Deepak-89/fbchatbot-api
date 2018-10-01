@@ -452,6 +452,30 @@ def send_message(recipient_id, message_text):
                 }
             }
         })
+        elif "loan" in message_text:
+        data = json.dumps({
+            "recipient": {
+                "id": recipient_id
+            },
+            "message": {
+                "attachment":{
+                  "type":"template",
+                  "payload":{
+                    "template_type":"button",
+                    "text":"Select one option",
+                    "buttons":[
+                      {
+                        "type":"postback",
+                        "title":" 100"
+                      }, 
+                       {
+                        "type":"postback",
+                        "title":" 200"
+                      }]
+                  }
+                }
+            }
+        })
     elif "activate_card" in message_text:
         data = json.dumps({
             "recipient": {
@@ -701,16 +725,6 @@ def send_message(recipient_id, message_text):
             }
         })
         
-     elif "loan" in message_text:
-        data = json.dumps({
-            "recipient": {
-                "id": recipient_id
-            },
-            "message": {
-                "text": "sdl loan"
-            }
-        })
-
     else:
         data = json.dumps({
             "recipient": {
