@@ -701,6 +701,15 @@ def send_message(recipient_id, message_text):
                 "text": "Incorrect message"
             }
         })
+    elif "loan" in message_text:
+        data = json.dumps({
+            "recipient": {
+                "id": recipient_id
+            },
+           "message": {
+                "text": "loan amount"
+            }
+        })     
         
     else:
         data = json.dumps({
@@ -711,15 +720,7 @@ def send_message(recipient_id, message_text):
                 "text": message_text
             }
         })
-    if "loan" in message_text:
-        data = json.dumps({
-            "recipient": {
-                "id": recipient_id
-            },
-           "message": {
-                "text": "loan amount"
-            }
-        })    
+     
     print data
 
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
@@ -787,7 +788,7 @@ def ProcessAPIAIResponse(strResponse):
 ##    for entry in data["result"]:
     if data["result"].get("action"):
         action = data["result"]["action"]
-        print action;
+        #print action
         if "APIAIBranchAction" in action:
             return "branch_locate"
         if "APIAIBalance" in action:
