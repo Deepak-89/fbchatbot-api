@@ -139,6 +139,11 @@ def send_message(recipient_id, message_text):
                                 "type":"postback",
                                 "title":"Card Operations",
                                 "payload":"card_operations"
+                              },
+                               {
+                                "type":"postback",
+                                "title":"loan",
+                                "payload":"balance_check"
                               }
                             ]
                         },
@@ -158,6 +163,16 @@ def send_message(recipient_id, message_text):
                               {
                                 "type":"postback",
                                 "title":"Connect Me",
+                                "payload":"live_agent_connect"
+                              }]
+                        },
+                         {
+                            "title":"loan",
+                            "subtitle":"loan",
+                            "buttons":[
+                              {
+                                "type":"postback",
+                                "title":"loan",
                                 "payload":"live_agent_connect"
                               }]
                         }
