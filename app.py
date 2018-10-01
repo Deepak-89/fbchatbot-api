@@ -122,7 +122,7 @@ def send_message(recipient_id, message_text):
                     "template_type":"generic",
                     "elements":[
                         {
-                            "title":"How may I help you?",
+                            "title":"How may I help you-?",
                             "subtitle":"Please type your question or choose from the below option or slide right for more options.",
                             "buttons":[
                               {
@@ -132,8 +132,8 @@ def send_message(recipient_id, message_text):
                               },
                               {
 			        "type":"postback",
-                                "title":"sdl"
-                                ##"payload":"sdl"
+                                "title":"sdl",
+				"payload":"sdl"     
                               },
                               {
                                 "type":"postback",
@@ -610,6 +610,15 @@ def send_message(recipient_id, message_text):
                 "text": "Sure"
             }
         })
+   elif "sdl" in message_text:
+        data = json.dumps({
+            "recipient": {
+                "id": recipient_id
+            },
+            "message": {
+                "text": "thanks sdl"
+            }
+        })
     elif "live_agent_connect" in message_text:
         requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=waitForAMoment)
         requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=showTyping)
@@ -746,7 +755,7 @@ def process_message(text,sender_id):
                     elif(w.lower()=='balanc' or w.lower()=='summari'):
                         output="balance_check"
                     elif(ps.stem(w).lower()=='sdl'):
-                          output='thanks for sdl'
+                          output='sdl'
                     elif(w.lower()=='histori' or w.lower()=='transact'):
                         if 'cancel' in str(words).lower():
                             output="transaction_receipt"
