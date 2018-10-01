@@ -787,14 +787,15 @@ def ProcessAPIAIResponse(strResponse):
 ##    for entry in data["result"]:
     if data["result"].get("action"):
         action = data["result"]["action"]
+        print action;
         if "APIAIBranchAction" in action:
             return "branch_locate"
         if "APIAIBalance" in action:
             return "balance_check"
         if "APIAITransaction" in action:
             return "transaction_history"
-        if "APIAILoan" in action:
-            return "loan"
+        #if "APIAILoan" in action:
+            #return "loan"
         return ""
     else:
         return ""
