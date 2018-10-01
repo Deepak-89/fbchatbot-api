@@ -722,15 +722,16 @@ def send_message(recipient_id, message_text):
                     "template_type":"generic",
                     "elements":[
                      {
-                         "title":"Choose loan amount:",
-                         "buttons":[
-                             {
-                                "type":"postback",
-                                "title":"$100",
-                                "payload":"loan_amount_100"
-                             }
-                         ]
-                      }
+                        "title":"Your Loan amount",
+                        "subtitle":"Your Loan amount",
+                        "buttons":[
+                          {
+                            "type":"postback",
+                            "title":" $100",
+                            "payload":"loan_amount_100"
+                          }
+                        ]
+                     }
                     ]
                   }
                 }
