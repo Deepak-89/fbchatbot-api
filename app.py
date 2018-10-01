@@ -796,7 +796,7 @@ def ProcessAPIAIResponse(strResponse):
             return "transaction_history"
         #if "APIAILoan" in action:
             #return "loan"
-        return ""
+        #return ""
     else:
         return ""
         
