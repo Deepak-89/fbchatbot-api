@@ -142,7 +142,7 @@ def send_message(recipient_id, message_text):
                               },
                                {
                                 "type":"postback",
-                                "title":"loan",
+                                "title":"Balance Check",
                                 "payload":"balance_check"
                               }
                             ]
@@ -167,12 +167,12 @@ def send_message(recipient_id, message_text):
                               }]
                         },
                          {
-                            "title":"loan",
-                            "subtitle":"loan",
+                            "title":"Connect with Live Agent",
+                            "subtitle":"A live agent will assist you for your queries",
                             "buttons":[
                               {
                                 "type":"postback",
-                                "title":"loan",
+                                "title":"Connect Me",
                                 "payload":"live_agent_connect"
                               }]
                         }
