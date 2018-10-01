@@ -701,15 +701,51 @@ def send_message(recipient_id, message_text):
                 "text": "Incorrect message"
             }
         })
-    elif "loan" in message_text:
+    #elif "loan" in message_text:
+        #data = json.dumps({
+            #"recipient": {
+                #"id": recipient_id
+            #},
+           #"message": {
+                #"text": "loan amount"
+            #}
+        #})   
+     elif "loan" in message_text:
+         data = json.dumps({
+            "recipient": {
+                "id": recipient_id
+            },
+            "message": {
+                "attachment":{
+                  "type":"template",
+                  "payload":{
+                    "template_type":"generic",
+                    "elements":[
+                     {
+                         "title":"Choose loan amount:",
+                         "buttons":[
+                             {
+                                "type":"postback",
+                                "title":"$100",
+                                "payload":"loan_amount_100"
+                             }
+                         ]
+                      }
+                    ]
+                  }
+                }
+            }
+        })
+            
+       elif "loan_amount_100" in message_text:
         data = json.dumps({
             "recipient": {
                 "id": recipient_id
             },
-           "message": {
-                "text": "loan amount"
+            "message": {
+                "text": "your loan approved"
             }
-        })     
+        })
         
     else:
         data = json.dumps({
