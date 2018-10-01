@@ -132,7 +132,7 @@ def send_message(recipient_id, message_text):
                               },
                               {
 			        "type":"postback",
-                                "title":"Simple Dollar Loan",
+                                "title":"sdl",
                                 "payload":"sdl"
                               },
                               {
@@ -171,39 +171,7 @@ def send_message(recipient_id, message_text):
                 }
             }
         })
-    elif "sdl" in message_text:
-        data = json.dumps({
-            "recipient": {
-                "id": recipient_id
-            },
-            "message": {
-                "attachment":{
-                  "type":"template",
-                  "payload":{
-                    "template_type":"generic",
-                    "elements":[
-                     {
-                        "title":"Thanks for Showing interest in Simple Dollar Loan.",
-                        "subtitle":"Simple Dollar Loan:",
-                        "buttons":[
-                          {
-                            "type":"postback",
-                            "title":"$100",
-                            "payload":"One_Hundred_dollar"
-                          },
-                          {
-                            "type":"postback",
-                            "title":"$200",
-                            "payload":"Two_Hundred_dollar"
-                          }
-                          
-                        ]
-                     }
-                    ]
-                  }
-                }
-            }
-        })
+    
     elif "transaction_history_1" in message_text:
         data = json.dumps({
             "recipient": {
@@ -353,6 +321,38 @@ def send_message(recipient_id, message_text):
                            ]
                      }
 
+                    ]
+                  }
+                }
+            }
+        })
+  elif "sdl" in message_text:
+        data = json.dumps({
+            "recipient": {
+                "id": recipient_id
+            },
+            "message": {
+                "attachment":{
+                  "type":"template",
+                  "payload":{
+                    "template_type":"generic",
+                    "elements":[
+                     {
+                        "title":"Thanks for Showing interest in Simple Dollar Loan.",
+                        "subtitle":"Simple Dollar Loan:",
+                        "buttons":[
+                          {
+                            "type":"postback",
+                            "title":"$100"
+                          
+                          },
+                          {
+                            "type":"postback",
+                            "title":"$200"
+                          }
+                          
+                        ]
+                     }
                     ]
                   }
                 }
