@@ -701,15 +701,7 @@ def send_message(recipient_id, message_text):
                 "text": "Incorrect message"
             }
         })
-    #elif "loan" in message_text:
-        #data = json.dumps({
-            #"recipient": {
-                #"id": recipient_id
-            #},
-           #"message": {
-                #"text": "loan amount"
-            #}
-        #})   
+    
      elif "loan" in message_text:
          data = json.dumps({
             "recipient": {
@@ -738,7 +730,7 @@ def send_message(recipient_id, message_text):
             }
         })
             
-       elif "amount100" in message_text:
+     elif "amount100" in message_text:
         data = json.dumps({
             "recipient": {
                 "id": recipient_id
