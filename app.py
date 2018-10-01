@@ -452,30 +452,7 @@ def send_message(recipient_id, message_text):
                 }
             }
         })
-        elif "loan" in message_text:
-        data = json.dumps({
-            "recipient": {
-                "id": recipient_id
-            },
-            "message": {
-                "attachment":{
-                  "type":"template",
-                  "payload":{
-                    "template_type":"button",
-                    "text":"Select one option",
-                    "buttons":[
-                      {
-                        "type":"postback",
-                        "title":" 100"
-                      }, 
-                       {
-                        "type":"postback",
-                        "title":" 200"
-                      }]
-                  }
-                }
-            }
-        })
+        
     elif "activate_card" in message_text:
         data = json.dumps({
             "recipient": {
@@ -734,6 +711,30 @@ def send_message(recipient_id, message_text):
                 "text": message_text
             }
         })
+    if "loan" in message_text:
+        data = json.dumps({
+            "recipient": {
+                "id": recipient_id
+            },
+            "message": {
+                "attachment":{
+                  "type":"template",
+                  "payload":{
+                    "template_type":"button",
+                    "text":"Select one option",
+                    "buttons":[
+                      {
+                        "type":"postback",
+                        "title":" 100"
+                      }, 
+                       {
+                        "type":"postback",
+                        "title":" 200"
+                      }]
+                  }
+                }
+            }
+        })    
     print data
 
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
