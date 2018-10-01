@@ -122,7 +122,7 @@ def send_message(recipient_id, message_text):
                     "template_type":"generic",
                     "elements":[
                         {
-                            "title":"How may I help you?",
+                            "title":"How may I help you---?",
                             "subtitle":"Please type your question or choose from the below option or slide right for more options.",
                             "buttons":[
                               {
