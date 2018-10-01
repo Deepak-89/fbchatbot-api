@@ -131,11 +131,6 @@ def send_message(recipient_id, message_text):
                                 "payload":"balance_check"
                               },
                               {
-			        "type":"postback",
-                                "title":"sdl",
-				"payload":"sdl"     
-                              },
-                              {
                                 "type":"postback",
                                 "title":"Transaction History",
                                 "payload":"transaction_history"
@@ -610,15 +605,7 @@ def send_message(recipient_id, message_text):
                 "text": "Sure"
             }
         })
-   elif "sdl" in message_text:
-        data = json.dumps({
-            "recipient": {
-                "id": recipient_id
-            },
-            "message": {
-                "text": "thanks sdl"
-            }
-        })
+  
     elif "live_agent_connect" in message_text:
         requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=waitForAMoment)
         requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=showTyping)
@@ -753,9 +740,7 @@ def process_message(text,sender_id):
                     elif(w.lower()=='activat'):
                         output="Card has been Activated"
                     elif(w.lower()=='balanc' or w.lower()=='summari'):
-                        output="balance_check"
-                    elif(ps.stem(w).lower()=='sdl'):
-                          output='sdl'
+                        output="balance_check"                   
                     elif(w.lower()=='histori' or w.lower()=='transact'):
                         if 'cancel' in str(words).lower():
                             output="transaction_receipt"
