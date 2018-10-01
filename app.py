@@ -131,7 +131,7 @@ def send_message(recipient_id, message_text):
                                 "payload":"balance_check"
                               },
                               {
-			                	"type":"postback",
+			        "type":"postback",
                                 "title":"Simple Dollar Loan",
                                 "payload":"sdl"
                               },
@@ -183,8 +183,7 @@ def send_message(recipient_id, message_text):
                     "template_type":"generic",
                     "elements":[
                      {
-                        "title":"Thanks for Showing interest in Simple Dollar Loan.You are eligible for loan up to
-$500",
+                        "title":"Thanks for Showing interest in Simple Dollar Loan.",
                         "subtitle":"Simple Dollar Loan:",
                         "buttons":[
                           {
