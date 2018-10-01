@@ -131,6 +131,11 @@ def send_message(recipient_id, message_text):
                                 "payload":"balance_check"
                               },
                               {
+			                	"type":"postback",
+                                "title":"Simple Dollar Loan",
+                                "payload":"sdl"
+                              },
+                              {
                                 "type":"postback",
                                 "title":"Transaction History",
                                 "payload":"transaction_history"
@@ -161,6 +166,40 @@ def send_message(recipient_id, message_text):
                                 "payload":"live_agent_connect"
                               }]
                         }
+                    ]
+                  }
+                }
+            }
+        })
+    elif "sdl" in message_text:
+        data = json.dumps({
+            "recipient": {
+                "id": recipient_id
+            },
+            "message": {
+                "attachment":{
+                  "type":"template",
+                  "payload":{
+                    "template_type":"generic",
+                    "elements":[
+                     {
+                        "title":"Thanks for Showing interest in Simple Dollar Loan.You are eligible for loan up to
+$500",
+                        "subtitle":"Simple Dollar Loan:",
+                        "buttons":[
+                          {
+                            "type":"postback",
+                            "title":"$100",
+                            "payload":"One_Hundred_dollar"
+                          },
+                          {
+                            "type":"postback",
+                            "title":"$200",
+                            "payload":"Two_Hundred_dollar"
+                          }
+                          
+                        ]
+                     }
                     ]
                   }
                 }
@@ -738,6 +777,8 @@ def process_message(text,sender_id):
                         output="Card has been Activated"
                     elif(w.lower()=='balanc' or w.lower()=='summari'):
                         output="balance_check"
+                    elif(ps.stem(w).lower()=='sdl'):
+                         output="sdl"
                     elif(w.lower()=='histori' or w.lower()=='transact'):
                         if 'cancel' in str(words).lower():
                             output="transaction_receipt"
