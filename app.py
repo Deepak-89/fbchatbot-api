@@ -798,19 +798,13 @@ def send_message(recipient_id, message_text):
                                 "type":"postback",
                                 "title":"Savings xxx432",
                                 "payload":"refund_account"
-                             },
-                             {
-                                "type":"postback",
-                                "title":"CD xxx478",
-                                "payload":"refund_account"
-                             }
-                         ]
-                      }
-                    ]
+                             }]
+                      }]
                   }
-                }
+               }
             }
-        })  
+         })  
+        
      elif "refund_account" in message_text:
         data = json.dumps({
             "recipient": {
