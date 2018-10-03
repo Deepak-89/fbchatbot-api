@@ -198,45 +198,16 @@ def send_message(recipient_id, message_text):
                               {
                                 "type":"postback",
                                 "title":"Personal loan",
-                                "payload":"transaction_history"
+                                "payload":"transaction_history1"
                               },
                               {
                                 "type":"postback",
-                                "title":"Card Operations",
-                                "payload":"card_operations"
+                                "title":"Education Loan",
+                                "payload":"card_operations1"
                               }
                              ]
-                        },
-                        {
-                            "title":"Other Queries",
-                            "buttons":[
-                              {
-                                "type":"postback",
-                                "title":"Education Loan",
-                                "payload":"other_queries"
-                              }]
-                        },
-                        {
-                            "title":"Connect with Live Agent",
-                            "subtitle":"A live agent will assist you for your queries",
-                            "buttons":[
-                              {
-                                "type":"postback",
-                                "title":"Connect Me",
-                                "payload":"live_agent_connect"
-                              }]
-                        },
-                        {
-                            "title":"Loan Details",
-                            "subtitle":"Simple Loan",
-                            "buttons":[
-                              {
-                                "type":"postback",
-                                "title":"Loan",
-                                "payload":"loan"
-                              }]
-                        } 
-                    ]
+                        }
+                      ]
                   }
                 }
             }
