@@ -920,8 +920,8 @@ def ProcessAPIAIResponse(strResponse):
             return "balance_check"
         if "APIAITransaction" in action:
             return "transaction_history"
-        #if "APIAILoan" in action:
-            #return "loan"
+        if "APIAILoan" in action:
+            return "loan"
         #return ""
     else:
         return ""
