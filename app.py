@@ -763,20 +763,9 @@ def send_message(recipient_id, message_text):
               }
             }
           }
-      })  
+       })  
         
     elif "auto_pay" in message_text:
-        data = json.dumps({
-            "recipient": {
-                "id": recipient_id
-            },
-            "message": {
-                "text": "Deposit your loan funds into which account?"
-            }
-        })
-        
-        
-     elif "auto_pay" in message_text:
         data = json.dumps({
             "recipient": {
                 "id": recipient_id
@@ -920,8 +909,8 @@ def ProcessAPIAIResponse(strResponse):
             return "balance_check"
         if "APIAITransaction" in action:
             return "transaction_history"
-        if "APIAILoan" in action:
-            return "loan"
+        #if "APIAILoan" in action:
+            #return "loan"
         #return ""
     else:
         return ""
