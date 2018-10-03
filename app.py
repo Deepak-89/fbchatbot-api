@@ -721,16 +721,6 @@ def send_message(recipient_id, message_text):
                             "type":"postback",
                             "title":" $100",
                             "payload":"loan_amount_100"
-                          },
-                           {
-                            "type":"postback",
-                            "title":" $200",
-                            "payload":"loan_amount_200"
-                          },
-                           {
-                            "type":"postback",
-                            "title":" $300",
-                            "payload":"loan_amount_300"
                           }
                         ]
                      }
@@ -740,7 +730,7 @@ def send_message(recipient_id, message_text):
             }
         })
         
-    elif "loan_amount_100" in message_text or "loan_amount_200" in message_text or "loan_amount_300" in message_text:
+    elif "loan_amount_100" in message_text:
         data = json.dumps({
             "recipient": {
                 "id": recipient_id
@@ -770,7 +760,7 @@ def send_message(recipient_id, message_text):
           }
       })  
         
-    elif "auto_pay" in message_text or "manual_pay" in message_text:
+    elif "auto_pay" in message_text:
         data = json.dumps({
             "recipient": {
                 "id": recipient_id
@@ -779,6 +769,16 @@ def send_message(recipient_id, message_text):
                 "text": "Deposit your loan funds into which account?"
             }
         })
+        
+    elif "manual_pay" in message_text:
+        data = json.dumps({
+            "recipient": {
+                "id": recipient_id
+            },
+            "message": {
+                "text": "Deposit your loan funds into which account?"
+            }
+        })   
   
         
     else:
@@ -831,10 +831,6 @@ def process_message(text,sender_id):
                         output="loan" 
                     elif(w.lower()=='loan_amount_100'):
                         output="loan_amount_100"
-                    elif(w.lower()=='loan_amount_200'):
-                        output="loan_amount_200"
-                    elif(w.lower()=='loan_amount_300'):
-                        output="loan_amount_300"
                     elif(w.lower()=='auto_pay'):
                         output="auto_pay"
                     elif(w.lower()=='manual_pay'):
