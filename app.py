@@ -197,7 +197,7 @@ def send_message(recipient_id, message_text):
                               },
                               {
                                 "type":"postback",
-                                "title":"Transaction History",
+                                "title":"Personal loan",
                                 "payload":"transaction_history"
                               },
                               {
@@ -212,7 +212,7 @@ def send_message(recipient_id, message_text):
                             "buttons":[
                               {
                                 "type":"postback",
-                                "title":"Let me Type",
+                                "title":"Education Loan",
                                 "payload":"other_queries"
                               }]
                         },
