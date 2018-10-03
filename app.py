@@ -845,7 +845,7 @@ def send_message(recipient_id, message_text):
                 "id": recipient_id
             },
             "message": {
-                "text": "You have to pay $515 for 3 months Your first loan repayment date is 15/10/2018 Please confirm to proceed further"
+                "text": "You have to pay $515 for 3 months"
             }
         })     
   
