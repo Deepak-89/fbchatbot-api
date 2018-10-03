@@ -23,9 +23,6 @@ from datetime import datetime
 
 app = Flask(__name__)
 CLIENT_ACCESS_TOKEN = '02c71e6097984c9691f891e0f63a0c14'
-loanamount = 0
-loanpaymentinterest = 0 
-log(loanamount)
 #@app.route('/GetMethod', methods=['Get'])
 def GetMethod(strUserQuery):
     ai = apiai.ApiAI(CLIENT_ACCESS_TOKEN)
@@ -768,7 +765,7 @@ def send_message(recipient_id, message_text):
        })  
         
     elif "auto_pay" in message_text or "manual_pay" in message_text:
-        print loanamount
+        
         data = json.dumps({
             "recipient": {
                 "id": recipient_id
@@ -902,17 +899,13 @@ def process_message(text,sender_id):
                     elif(w.lower()=='loan'):
                         output="loan" 
                     elif(w.lower()=='amt_100_dollar'):
-                        loanamount = 100
                         output="amt_100_dollar" 
                     elif(w.lower()=='amt_200_dollar'):
-                        loanamount = 200 
                         output="amt_200_dollar"
                     elif(w.lower()=='auto_pay'):
-                        loanpaymentinterest = 12 
                         output="auto_pay"                       
                     elif(w.lower()=='manual_pay'):
-                       loanpaymentinterest = 15 
-                       output="manual_pay"   
+                        output="manual_pay"   
                     elif(w.lower()=='repayment_account_1'):
                         output="repayment_account_1"
                     elif(w.lower()=='repayment_account_2'):
