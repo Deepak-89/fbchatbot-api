@@ -109,7 +109,7 @@ def send_message(recipient_id, message_text):
     headers = {
         "Content-Type": "application/json"
     }
-    if "Level-1-Menu" in message_text or "Main Menu" in message_text:
+    if "Level-1-Menu1" in message_text or "Main Menu1" in message_text:
         data = json.dumps({
             "recipient": {
                 "id": recipient_id
@@ -128,6 +128,72 @@ def send_message(recipient_id, message_text):
                                 "type":"postback",
                                 "title":"Balance Check",
                                 "payload":"balance_check"
+                              },
+                              {
+                                "type":"postback",
+                                "title":"Transaction History",
+                                "payload":"transaction_history"
+                              },
+                              {
+                                "type":"postback",
+                                "title":"Card Operations",
+                                "payload":"card_operations"
+                              }
+                             ]
+                        },
+                        {
+                            "title":"Other Queries",
+                            "buttons":[
+                              {
+                                "type":"postback",
+                                "title":"Let me Type",
+                                "payload":"other_queries"
+                              }]
+                        },
+                        {
+                            "title":"Connect with Live Agent",
+                            "subtitle":"A live agent will assist you for your queries",
+                            "buttons":[
+                              {
+                                "type":"postback",
+                                "title":"Connect Me",
+                                "payload":"live_agent_connect"
+                              }]
+                        },
+                        {
+                            "title":"Loan Details",
+                            "subtitle":"Simple Loan",
+                            "buttons":[
+                              {
+                                "type":"postback",
+                                "title":"Loan",
+                                "payload":"loan"
+                              }]
+                        } 
+                    ]
+                  }
+                }
+            }
+        })
+    if "Level-1-Menu" in message_text or "Main Menu" in message_text:
+        data = json.dumps({
+            "recipient": {
+                "id": recipient_id
+            },
+            "message": {
+                "attachment":{
+                  "type":"template",
+                  "payload":{
+                    "template_type":"generic",
+                    "elements":[
+                        {
+                            "title":"How may I help you-?",
+                            "subtitle":"Please find the loan options below.",
+                            "buttons":[
+                              {
+                                "type":"postback",
+                                "title":"Simple Loan",
+                                "payload":"loan"
                               },
                               {
                                 "type":"postback",
