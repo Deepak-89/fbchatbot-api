@@ -805,7 +805,7 @@ def send_message(recipient_id, message_text):
           }
      })  
         
-     elif "refund_opt_account" in message_text:
+     elif "refund_opt2_account" in message_text:
         data = json.dumps({
             "recipient": {
                 "id": recipient_id
@@ -814,6 +814,15 @@ def send_message(recipient_id, message_text):
                 "text": "Make Automatic payments from which account?"
             }
        })
+       elif "refund_opt1_account" in message_text:
+        data = json.dumps({
+            "recipient": {
+                "id": recipient_id
+            },
+            "message": {
+                "text": "Make Automatic payments from which account?"
+            }
+       })   
     
     else:
         data = json.dumps({
@@ -871,8 +880,10 @@ def process_message(text,sender_id):
                         output="auto_pay"
                     elif(w.lower()=='manual_pay'):
                         output="manual_pay"
-                    elif(w.lower()=='refund_opt2_account' or  w.lower()=='refund_opt1_account'):
-                        output="refund_opt_account"                        
+                    elif(w.lower()=='refund_opt1_account'):
+                        output="refund_opt1_account"       
+                    elif(w.lower()=='refund_opt2_account'):
+                        output="refund_opt2_account"          
                     elif(w.lower()=='histori' or w.lower()=='transact'):
                         if 'cancel' in str(words).lower():
                             output="transaction_receipt"
