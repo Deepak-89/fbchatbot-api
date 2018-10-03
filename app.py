@@ -775,7 +775,7 @@ def send_message(recipient_id, message_text):
             }
       })
         
-   elif "manual_pay" in message_text:
+    elif "manual_pay" in message_text:
         data = json.dumps({
             "recipient": {
                 "id": recipient_id
