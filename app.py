@@ -714,13 +714,23 @@ def send_message(recipient_id, message_text):
                     "template_type":"generic",
                     "elements":[
                      {
-                        "title":"Your Loan amount",
-                        "subtitle":"Your Loan amount",
+                        "title":"Thanks for Showing interest in Simple Dollar Loan.",
+                        "subtitle":"You are eligible for loan up to $300",
                         "buttons":[
                           {
                             "type":"postback",
                             "title":" $100",
-                            "payload":"amount100"
+                            "payload":"loan_amount_100"
+                          },
+                           {
+                            "type":"postback",
+                            "title":" $200",
+                            "payload":"loan_amount_200"
+                          },
+                           {
+                            "type":"postback",
+                            "title":" $300",
+                            "payload":"loan_amount_300"
                           }
                         ]
                      }
@@ -729,17 +739,45 @@ def send_message(recipient_id, message_text):
                 }
             }
         })
-            
-    elif "amount100" in message_text:
+        
+    elif "loan_amount_100" in message_text or "loan_amount_100" in message_text or "loan_amount_300" in message_text:
+        data = json.dumps({
+            "recipient": {
+                "id": recipient_id
+            },
+            "message":{
+              "attachment":{
+                 "type":"template",
+                 "payload":{
+                 "template_type":"generic",
+              "elements":[
+               {
+                  "title":"Sure, Are you opting for Manual pay ($15 for each $100) / Auto pay($12 for each $100) ?",
+                  "buttons":[
+                     {
+                        "type":"postback",     
+                        "title":"Manual pay",
+                        "payload":"manual_pay"
+                     },
+                     {
+                        "type":"postback",     
+                        "title":"Auto pay",
+                        "payload":"auto_pay"
+                     }]
+                }]
+              }
+            }
+          }
+      })   
+    elif "auto_pay" in message_text or "manual_pay" in message_text:
         data = json.dumps({
             "recipient": {
                 "id": recipient_id
             },
             "message": {
-                "text": "your loan approved"
+                "text": "Deposit your loan funds into which account?"
             }
         })
-        
     else:
         data = json.dumps({
             "recipient": {
@@ -788,8 +826,16 @@ def process_message(text,sender_id):
                         output="balance_check" 
                     elif(w.lower()=='loan'):
                         output="loan" 
-                    elif(w.lower()=='amount100'):
-                        output="amount100"     
+                    elif(w.lower()=='loan_amount_100'):
+                        output="loan_amount_100"
+                    elif(w.lower()=='loan_amount_200'):
+                        output="loan_amount_200"
+                    elif(w.lower()=='loan_amount_300'):
+                        output="loan_amount_300"
+                    elif(w.lower()=='auto_pay'):
+                        output="auto_pay"
+                    elif(w.lower()=='manual_pay'):
+                        output="manual_pay"
                     elif(w.lower()=='histori' or w.lower()=='transact'):
                         if 'cancel' in str(words).lower():
                             output="transaction_receipt"
