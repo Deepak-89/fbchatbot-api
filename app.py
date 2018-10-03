@@ -161,13 +161,13 @@ def send_message(recipient_id, message_text):
                               }]
                         },
                         {
-                            "title":"Connect with Live Agent1",
-                            "subtitle":"A live agent will assist you for your queries",
+                            "title":"Loan Details",
+                            "subtitle":"Simple Loan",
                             "buttons":[
                               {
                                 "type":"postback",
-                                "title":"Connect Me",
-                                "payload":"live_agent_connect"
+                                "title":"Loan",
+                                "payload":"loan"
                               }]
                         } 
                     ]
