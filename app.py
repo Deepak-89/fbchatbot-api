@@ -806,7 +806,7 @@ def send_message(recipient_id, message_text):
           
      })  
         
-     elif "refund_opt2_account" in message_text:
+   elif "refund_opt2_account" in message_text:
         data = json.dumps({
             "recipient": {
                 "id": recipient_id
@@ -815,7 +815,8 @@ def send_message(recipient_id, message_text):
                 "text": "Make Automatic payments from which account?"
             }
        })
-       elif "refund_opt1_account" in message_text:
+        
+    elif "refund_opt1_account" in message_text:
         data = json.dumps({
             "recipient": {
                 "id": recipient_id
