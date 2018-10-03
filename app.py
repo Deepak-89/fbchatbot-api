@@ -780,29 +780,30 @@ def send_message(recipient_id, message_text):
             "recipient": {
                 "id": recipient_id
             },
-            "message": {
-                "attachment":{
-                  "type":"template",
-                  "payload":{
-                    "template_type":"generic",
-                    "elements":[
-                     {
-                         "title":"Deposit your loan funds into which account?:",
-                         "buttons":[
-                             {
-                                "type":"postback",
-                                "title":"Checking xxx356",
-                                "payload":"refund_opt1_account"
-                             },
-                             {
-                                "type":"postback",
-                                "title":"Savings xxx432",
-                                "payload":"refund_opt2_account"
+             "message":{
+              "attachment":{
+                 "type":"template",
+                 "payload":{
+                     "template_type":"generic",
+                     "elements":[
+                      {
+                          "title":"Sure, ",
+                          "buttons":[
+                          {
+                            "type":"postback",     
+                            "title":"account1",
+                            "payload":"refund_opt2_account"
+                         },
+                         {
+                            "type":"postback",     
+                            "title":"account1",
+                            "payload":"refund_opt1_account"
                          }]
-                   }]
-                }
+                 }]
+              }
             }
           }
+          
      })  
         
      elif "refund_opt2_account" in message_text:
