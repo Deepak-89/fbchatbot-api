@@ -775,6 +775,17 @@ def send_message(recipient_id, message_text):
             }
         })
         
+        
+     elif "auto_pay" in message_text:
+        data = json.dumps({
+            "recipient": {
+                "id": recipient_id
+            },
+            "message": {
+                "text": "Deposit your loan funds into which account?"
+            }
+      })
+        
     elif "manual_pay" in message_text:
         data = json.dumps({
             "recipient": {
@@ -798,14 +809,14 @@ def send_message(recipient_id, message_text):
                                 "type":"postback",
                                 "title":"Savings xxx432",
                                 "payload":"refund_opt2_account"
-                             }]
-                      }]
-                  }
-               }
+                         }]
+                   }]
+                }
             }
-         })  
+          }
+     })  
         
-     elif "refund_opt_account":
+     elif "refund_opt_account" in message_text:
         data = json.dumps({
             "recipient": {
                 "id": recipient_id
