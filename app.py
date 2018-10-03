@@ -23,7 +23,8 @@ from datetime import datetime
 
 app = Flask(__name__)
 CLIENT_ACCESS_TOKEN = '02c71e6097984c9691f891e0f63a0c14'
-
+ loan_amount = 0
+ loan_payment_interest = 0 
 #@app.route('/GetMethod', methods=['Get'])
 def GetMethod(strUserQuery):
     ai = apiai.ApiAI(CLIENT_ACCESS_TOKEN)
@@ -60,14 +61,14 @@ def verify():
 
 @app.route('/bot', methods=['POST'])
 def webhook():
-
+   
     # endpoint for processing incoming messaging events
     data = request.get_json()
 
     log(data)  # you may not want to log every incoming message in production, but it's good for testing
 
     #if data["object"] == "page":
-
+     
     for entry in data["entry"]:
         for messaging_event in entry["messaging"]:
 
@@ -766,6 +767,7 @@ def send_message(recipient_id, message_text):
        })  
         
     elif "auto_pay" in message_text or "manual_pay" in message_text:
+        print loan_amount
         data = json.dumps({
             "recipient": {
                 "id": recipient_id
@@ -869,6 +871,7 @@ def send_message(recipient_id, message_text):
     return r.status_code;
 
 def process_message(text,sender_id):
+      
         text=text.lower()
         words=text.split(" ")
         print("Before GetMethod")
@@ -898,13 +901,17 @@ def process_message(text,sender_id):
                     elif(w.lower()=='loan'):
                         output="loan" 
                     elif(w.lower()=='amt_100_dollar'):
+                        loan_amount = 100
                         output="amt_100_dollar" 
                     elif(w.lower()=='amt_200_dollar'):
-                        output="amt_200_dollar"     
+                        loan_amount = 200 
+                        output="amt_200_dollar"
                     elif(w.lower()=='auto_pay'):
-                        output="auto_pay"
+                        loan_payment_interest = 12 
+                        output="auto_pay"                       
                     elif(w.lower()=='manual_pay'):
-                        output="manual_pay"   
+                       loan_payment_interest = 15 
+                       output="manual_pay"   
                     elif(w.lower()=='repayment_account_1'):
                         output="repayment_account_1"
                     elif(w.lower()=='repayment_account_2'):
