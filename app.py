@@ -780,52 +780,11 @@ def send_message(recipient_id, message_text):
             "recipient": {
                 "id": recipient_id
             },
-             "message":{
-              "attachment":{
-                 "type":"template",
-                 "payload":{
-                     "template_type":"generic",
-                     "elements":[
-                      {
-                          "title":"Sure, ",
-                          "buttons":[
-                          {
-                            "type":"postback",     
-                            "title":"account1",
-                            "payload":"refund_opt2_account"
-                         },
-                         {
-                            "type":"postback",     
-                            "title":"account1",
-                            "payload":"refund_opt1_account"
-                         }]
-                 }]
-              }
+             "message": {
+                "text": "Deposit your loan funds into which account?"
             }
-          }
-          
-     })  
-        
-   elif "refund_opt2_account" in message_text:
-        data = json.dumps({
-            "recipient": {
-                "id": recipient_id
-            },
-            "message": {
-                "text": "Make Automatic payments from which account?"
-            }
-       })
-        
-    elif "refund_opt1_account" in message_text:
-        data = json.dumps({
-            "recipient": {
-                "id": recipient_id
-            },
-            "message": {
-                "text": "Make Automatic payments from which account?"
-            }
-       })   
-    
+       })          
+  
     else:
         data = json.dumps({
             "recipient": {
@@ -881,11 +840,7 @@ def process_message(text,sender_id):
                     elif(w.lower()=='auto_pay'):
                         output="auto_pay"
                     elif(w.lower()=='manual_pay'):
-                        output="manual_pay"
-                    elif(w.lower()=='refund_opt1_account'):
-                        output="refund_opt1_account"       
-                    elif(w.lower()=='refund_opt2_account'):
-                        output="refund_opt2_account"          
+                        output="manual_pay"                   
                     elif(w.lower()=='histori' or w.lower()=='transact'):
                         if 'cancel' in str(words).lower():
                             output="transaction_receipt"
