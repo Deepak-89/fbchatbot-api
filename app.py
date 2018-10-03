@@ -138,11 +138,6 @@ def send_message(recipient_id, message_text):
                                 "type":"postback",
                                 "title":"Card Operations",
                                 "payload":"card_operations"
-                              },
-                              {
-                                "type":"postback",
-                                "title":"Card Operations1",
-                                "payload":"card_operations"
                               }
                              ]
                         },
