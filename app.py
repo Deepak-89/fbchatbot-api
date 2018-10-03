@@ -721,6 +721,11 @@ def send_message(recipient_id, message_text):
                             "type":"postback",
                             "title":" $100",
                             "payload":"amt_100_dollar"
+                          },
+                           {
+                            "type":"postback",
+                            "title":" $200",
+                            "payload":"amt_200_dollar"
                           }
                         ]
                      }
@@ -730,7 +735,7 @@ def send_message(recipient_id, message_text):
             }
         })
         
-    elif "amt_100_dollar" in message_text:
+    elif "amt_100_dollar" in message_text or "amt_200_dollar" in message_text:
         data = json.dumps({
             "recipient": {
                 "id": recipient_id
@@ -760,25 +765,79 @@ def send_message(recipient_id, message_text):
           }
        })  
         
-    elif "auto_pay" in message_text:
+    elif "auto_pay" in message_text or "manual_pay" in message_text:
         data = json.dumps({
             "recipient": {
                 "id": recipient_id
             },
             "message": {
-                "text": "Deposit your loan funds into which account?"
+                "attachment":{
+                  "type":"template",
+                  "payload":{
+                    "template_type":"generic",
+                    "elements":[
+                     {
+                         "title":"Deposit your loan funds into which account?",
+                         "buttons":[
+                             {
+                                "type":"postback",
+                                "title":"Savings xxx438",
+                                "payload":"repayment_account_1"
+                             },
+                             {
+                                "type":"postback",
+                                "title":"Savings xxx432",
+                                "payload":"repayment_account_2"
+                             },
+                             {
+                                "type":"postback",
+                                "title":"Savings xxx938",
+                                "payload":"repayment_account_3"
+                             }
+                         ]
+                      }
+                    ]
+                  }
+                }
             }
       })
         
-    elif "manual_pay" in message_text:
+    elif "repayment_account_1" in message_text or "repayment_account_2" in message_text or "repayment_account_3" in message_text:
         data = json.dumps({
             "recipient": {
                 "id": recipient_id
             },
-             "message": {
-                "text": "Deposit your loan funds into which account?"
+            "message": {
+                "attachment":{
+                  "type":"template",
+                  "payload":{
+                    "template_type":"generic",
+                    "elements":[
+                     {
+                         "title":"Make Automatic payments from which account?",
+                         "buttons":[
+                             {
+                                "type":"postback",
+                                "title":"Savings xxx438",
+                                "payload":"repayment_account_1"
+                             },
+                             {
+                                "type":"postback",
+                                "title":"Savings xxx432",
+                                "payload":"repayment_account_2"
+                             },
+                             {
+                                "type":"postback",
+                                "title":"Savings xxx938",
+                                "payload":"repayment_account_3"
+                             }
+                         ]
+                      }
+                    ]
+                  }
+                }
             }
-       })          
+        })       
   
     else:
         data = json.dumps({
@@ -829,11 +888,19 @@ def process_message(text,sender_id):
                     elif(w.lower()=='loan'):
                         output="loan" 
                     elif(w.lower()=='amt_100_dollar'):
-                        output="amt_100_dollar"                     
+                        output="amt_100_dollar" 
+                    elif(w.lower()=='amt_200_dollar'):
+                        output="amt_200_dollar"     
                     elif(w.lower()=='auto_pay'):
                         output="auto_pay"
                     elif(w.lower()=='manual_pay'):
-                        output="manual_pay"                   
+                        output="manual_pay"   
+                    elif(w.lower()=='repayment_account_1'):
+                        output="repayment_account_1"
+                    elif(w.lower()=='repayment_account_2'):
+                        output="repayment_account_2"
+                    elif(w.lower()=='repayment_account_3'):
+                        output="repayment_account_3" 
                     elif(w.lower()=='histori' or w.lower()=='transact'):
                         if 'cancel' in str(words).lower():
                             output="transaction_receipt"
