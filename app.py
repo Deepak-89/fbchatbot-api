@@ -721,11 +721,6 @@ def send_message(recipient_id, message_text):
                             "type":"postback",
                             "title":" $100",
                             "payload":"amt_100_dollar"
-                          },
-                           {
-                            "type":"postback",
-                            "title":" $200",
-                            "payload":"amt_200_dollar"
                           }
                         ]
                      }
@@ -735,7 +730,7 @@ def send_message(recipient_id, message_text):
             }
         })
         
-    elif "amt_100_dollar" in message_text or "amt_200_dollar" in message_text:
+    elif "amt_100_dollar" in message_text:
         data = json.dumps({
             "recipient": {
                 "id": recipient_id
@@ -834,9 +829,7 @@ def process_message(text,sender_id):
                     elif(w.lower()=='loan'):
                         output="loan" 
                     elif(w.lower()=='amt_100_dollar'):
-                        output="amt_100_dollar"
-                    elif(w.lower()=='amt_200_dollar'):
-                        output="amt_200_dollar"    
+                        output="amt_100_dollar"                     
                     elif(w.lower()=='auto_pay'):
                         output="auto_pay"
                     elif(w.lower()=='manual_pay'):
