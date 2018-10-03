@@ -792,12 +792,12 @@ def send_message(recipient_id, message_text):
                              {
                                 "type":"postback",
                                 "title":"Checking xxx356",
-                                "payload":"refund1_account"
+                                "payload":"refund_opt1_account"
                              },
                              {
                                 "type":"postback",
                                 "title":"Savings xxx432",
-                                "payload":"refund2_account"
+                                "payload":"refund_opt2_account"
                              }]
                       }]
                   }
@@ -805,7 +805,7 @@ def send_message(recipient_id, message_text):
             }
          })  
         
-     elif "refund_opt1_account" in message_text or  "refund_opt2_account" in message_text:
+     elif "refund_opt_account":
         data = json.dumps({
             "recipient": {
                 "id": recipient_id
@@ -872,7 +872,7 @@ def process_message(text,sender_id):
                     elif(w.lower()=='manual_pay'):
                         output="manual_pay"
                     elif(w.lower()=='refund_opt2_account' or  w.lower()=='refund_opt1_account'):
-                        output="refund_account"                        
+                        output="refund_opt_account"                        
                     elif(w.lower()=='histori' or w.lower()=='transact'):
                         if 'cancel' in str(words).lower():
                             output="transaction_receipt"
@@ -909,8 +909,8 @@ def ProcessAPIAIResponse(strResponse):
             return "balance_check"
         if "APIAITransaction" in action:
             return "transaction_history"
-        if "APIAILoan" in action:
-            return "loan"
+        #if "APIAILoan" in action:
+            #return "loan"
         #return ""
     else:
         return ""
