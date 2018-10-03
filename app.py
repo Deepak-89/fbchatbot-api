@@ -740,7 +740,7 @@ def send_message(recipient_id, message_text):
             }
         })
         
-    elif "loan_amount_100" in message_text:
+    elif "loan_amount_100" in message_text or "loan_amount_200" in message_text or "loan_amount_300" in message_text:
         data = json.dumps({
             "recipient": {
                 "id": recipient_id
@@ -770,66 +770,6 @@ def send_message(recipient_id, message_text):
           }
       })  
         
-     elif "loan_amount_200" in message_text:
-        data = json.dumps({
-            "recipient": {
-                "id": recipient_id
-            },
-            "message":{
-              "attachment":{
-                 "type":"template",
-                 "payload":{
-                     "template_type":"generic",
-                     "elements":[
-                      {
-                          "title":"Sure, Are you opting for Manual pay ($15 for each $100) / Auto pay($12 for each $100) ?",
-                          "buttons":[
-                          {
-                            "type":"postback",     
-                            "title":"Manual pay",
-                            "payload":"manual_pay"
-                         },
-                         {
-                            "type":"postback",     
-                            "title":"Auto pay",
-                            "payload":"auto_pay"
-                         }]
-                 }]
-              }
-            }
-          }
-      })   
-        
-    elif "loan_amount_300" in message_text:
-        data = json.dumps({
-            "recipient": {
-                "id": recipient_id
-            },
-            "message":{
-              "attachment":{
-                 "type":"template",
-                 "payload":{
-                     "template_type":"generic",
-                     "elements":[
-                      {
-                          "title":"Sure, Are you opting for Manual pay ($15 for each $100) / Auto pay($12 for each $100) ?",
-                          "buttons":[
-                          {
-                            "type":"postback",     
-                            "title":"Manual pay",
-                            "payload":"manual_pay"
-                         },
-                         {
-                            "type":"postback",     
-                            "title":"Auto pay",
-                            "payload":"auto_pay"
-                         }]
-                 }]
-              }
-            }
-          }
-      })    
-        
     elif "auto_pay" in message_text or "manual_pay" in message_text:
         data = json.dumps({
             "recipient": {
@@ -839,16 +779,7 @@ def send_message(recipient_id, message_text):
                 "text": "Deposit your loan funds into which account?"
             }
         })
-        
-    elif "manual_pay" in message_text:
-        data = json.dumps({
-            "recipient": {
-                "id": recipient_id
-            },
-            "message": {
-                "text": "Deposit your loan funds into which account?"
-            }
-        })  
+  
         
     else:
         data = json.dumps({
