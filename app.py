@@ -819,17 +819,17 @@ def send_message(recipient_id, message_text):
                              {
                                 "type":"postback",
                                 "title":"Savings xxx438",
-                                "payload":"repayment_account_1"
+                                "payload":"confirm_loan"
                              },
                              {
                                 "type":"postback",
                                 "title":"Savings xxx432",
-                                "payload":"repayment_account_2"
+                                "payload":"confirm_loan"
                              },
                              {
                                 "type":"postback",
                                 "title":"Savings xxx938",
-                                "payload":"repayment_account_3"
+                                "payload":"confirm_loan"
                              }
                          ]
                       }
@@ -837,7 +837,17 @@ def send_message(recipient_id, message_text):
                   }
                 }
             }
-        })       
+        }) 
+        
+    elif "confirm_loan" in message_text:
+        data = json.dumps({
+            "recipient": {
+                "id": recipient_id
+            },
+            "message": {
+                "text": "You have to pay $515 for 3 months Your first loan repayment date is 15/10/2018 Please confirm to proceed further"
+            }
+        })     
   
     else:
         data = json.dumps({
@@ -901,6 +911,8 @@ def process_message(text,sender_id):
                         output="repayment_account_2"
                     elif(w.lower()=='repayment_account_3'):
                         output="repayment_account_3" 
+                    elif(w.lower()=='confirm_loan'):
+                        output="confirm_loan"
                     elif(w.lower()=='histori' or w.lower()=='transact'):
                         if 'cancel' in str(words).lower():
                             output="transaction_receipt"
