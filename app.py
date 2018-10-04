@@ -887,11 +887,8 @@ def send_message(recipient_id, message_text):
             }
         }) 
         
-    elif "confirm" in message_text:
-       
-        d1 = LoanGetter()
-        print(d1)
-        
+    elif "confirm" in message_text:       
+        d1 = LoanGetter()       
         data = json.dumps({
             "recipient": {
                 "id": recipient_id
@@ -992,10 +989,10 @@ def process_message(text,sender_id):
                     elif(w.lower()=='loan'):
                         output="loan" 
                     elif(w.lower()=='amt_100_dollar'):   
-                        LoanSetter(100)
+                        #LoanSetter(100)
                         output="amt_100_dollar"                         
                     elif(w.lower()=='amt_200_dollar'):                     
-                        LoanSetter(200)
+                        #LoanSetter(200)
                         output="amt_200_dollar"
                     elif(w.lower()=='auto_pay'):
                         output="auto_pay"                       
