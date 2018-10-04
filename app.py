@@ -889,6 +889,7 @@ def send_message(recipient_id, message_text):
         }) 
         
     elif "confirm" in message_text:
+        d1 = LoanGetter()
         data = json.dumps({
             "recipient": {
                 "id": recipient_id
@@ -900,7 +901,7 @@ def send_message(recipient_id, message_text):
                     "template_type":"generic",
                     "elements":[
                      {
-                         "title":"amount " + str(LoanGetter())  + " CT",
+                         "title":"amount " + str(d1)  + " CT",
                          "buttons":[
                              {
                                 "type":"postback",
@@ -989,11 +990,11 @@ def process_message(text,sender_id):
                         output="balance_check" 
                     elif(w.lower()=='loan'):
                         output="loan" 
-                    elif(w.lower()=='amt_100_dollar'): 
+                    elif(w.lower()=='amt_100_dollar'):   
                         LoanSetter(100)
                         output="amt_100_dollar"                         
-                    elif(w.lower()=='amt_200_dollar'):
-                        LoanSetter(200)
+                    elif(w.lower()=='amt_200_dollar'):                     
+                        LoanSetter(100)
                         output="amt_200_dollar"
                     elif(w.lower()=='auto_pay'):
                         output="auto_pay"                       
