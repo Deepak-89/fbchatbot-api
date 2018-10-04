@@ -21,15 +21,17 @@ from datetime import datetime
 ##from nltk.stem import PorterStemmer
 ##from nltk.tokenize import word_tokenize
 amount = 100
-app = Flask(__name__)
-CLIENT_ACCESS_TOKEN = '02c71e6097984c9691f891e0f63a0c14'
-#@app.route('/GetMethod', methods=['Get'])
-
 def LoanSetter(x):  
     amount = x
     
 def LoanGetter():  
-   return amount
+    return amount
+
+app = Flask(__name__)
+CLIENT_ACCESS_TOKEN = '02c71e6097984c9691f891e0f63a0c14'
+#@app.route('/GetMethod', methods=['Get'])
+
+
 
 def GetMethod(strUserQuery):
     ai = apiai.ApiAI(CLIENT_ACCESS_TOKEN)
@@ -887,10 +889,8 @@ def send_message(recipient_id, message_text):
             }
         }) 
         
-    elif "approve" in message_text:
-       
-        d1 = LoanGetter()
-        
+    elif "approve" in message_text:       
+        d1 = LoanGetter()        
         data = json.dumps({
             "recipient": {
                 "id": recipient_id
