@@ -203,8 +203,8 @@ def send_message(recipient_id, message_text):
                     "template_type":"generic",
                     "elements":[
                         {
-                            "title":"How may I help you-?",
-                            "subtitle":"Please find the loan options below.",
+                            "title":"Loan Options",
+                            "subtitle":"List of available loan in USBank.",
                             "buttons":[
                               {
                                 "type":"postback",
