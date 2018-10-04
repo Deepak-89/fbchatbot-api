@@ -938,7 +938,7 @@ def send_message(recipient_id, message_text):
                     "template_type":"generic",
                     "elements":[
                      {
-                         "title":"You have to pay $212 for 3 months,Your first loan repayment date is 25/11/2018 ,Automatic payments will be debited from Savings xxx438. Please confirm to proceed further.",
+                         "title":"You have to pay $212 for 3 months,Your first loan repayment date is 25/11/2018"+" "+"Automatic payments will be debited from Savings xxx438."+" "+" Please confirm to proceed further.",
                          "buttons":[
                              {
                                 "type":"postback",
@@ -964,7 +964,7 @@ def send_message(recipient_id, message_text):
                 "id": recipient_id
             },
             "message": {
-                "text": "congratulation! Your Loan is approved, Loan amount $200 will be credit to your Account Savings xxx438, Thanks for choosing US bank Simple Dollar Loan"
+                "text": "Congratulation! Your Loan is approved, Loan amount $200 will be credit to your Account Savings xxx438, Thanks for choosing US bank Simple Dollar Loan"
             }
         })    
         
