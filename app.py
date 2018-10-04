@@ -24,6 +24,10 @@ from datetime import datetime
 app = Flask(__name__)
 CLIENT_ACCESS_TOKEN = '02c71e6097984c9691f891e0f63a0c14'
 #@app.route('/GetMethod', methods=['Get'])
+def LoanSetter():
+    amt = 100
+    return amt;
+
 def GetMethod(strUserQuery):
     ai = apiai.ApiAI(CLIENT_ACCESS_TOKEN)
 
