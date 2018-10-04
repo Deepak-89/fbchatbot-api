@@ -938,7 +938,7 @@ def send_message(recipient_id, message_text):
                     "template_type":"generic",
                     "elements":[
                      {
-                         "title":"You have to pay $212 for 3 months,Your first loan repayment date is 25/11/2018 ",
+                         "title":"You have to pay $212 for 3 months,Your first loan repayment date is 25/11/2018 ,Automatic payments will be debited from Savings xxx438. Please confirm to proceed further.",
                          "buttons":[
                              {
                                 "type":"postback",
