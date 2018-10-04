@@ -912,8 +912,7 @@ def send_message(recipient_id, message_text):
     return r.status_code;
 
 def process_message(text,sender_id):
-        log(amt)
-        print (amt)
+     
         text=text.lower()
         words=text.split(" ")
         print("Before GetMethod")
@@ -942,12 +941,8 @@ def process_message(text,sender_id):
                         output="balance_check" 
                     elif(w.lower()=='loan'):
                         output="loan" 
-                    elif(w.lower()=='amt_100_dollar'):
-                         log(amt)
-                         amt = 200
-                        print (amt)
-                        output="amt_100_dollar" 
-                        
+                    elif(w.lower()=='amt_100_dollar'):                      
+                        output="amt_100_dollar"                         
                     elif(w.lower()=='amt_200_dollar'):
                         output="amt_200_dollar"
                     elif(w.lower()=='auto_pay'):
