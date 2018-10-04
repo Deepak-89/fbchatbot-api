@@ -24,7 +24,6 @@ from datetime import datetime
 app = Flask(__name__)
 CLIENT_ACCESS_TOKEN = '02c71e6097984c9691f891e0f63a0c14'
 #@app.route('/GetMethod', methods=['Get'])
-
 def GetMethod(strUserQuery):
     ai = apiai.ApiAI(CLIENT_ACCESS_TOKEN)
 
@@ -62,7 +61,8 @@ def verify():
 def webhook():
    
     # endpoint for processing incoming messaging events
-    data = request.get_json() 
+    data = request.get_json()
+
     log(data)  # you may not want to log every incoming message in production, but it's good for testing
 
     #if data["object"] == "page":
@@ -94,7 +94,9 @@ def webhook():
 
     return "ok", 200
 
+
 def send_message(recipient_id, message_text):
+
     log("sending message to {recipient}: {text}".format(recipient=recipient_id, text=message_text))
     showTyping = json.dumps({"recipient": {"id": recipient_id },"sender_action":"typing_on"})
     waitForAMoment = json.dumps({"recipient": {"id": recipient_id },"message":"Please wait for a moment."})
@@ -859,17 +861,17 @@ def send_message(recipient_id, message_text):
                              {
                                 "type":"postback",
                                 "title":"Savings xxx438",
-                                "payload":"confirm"
+                                "payload":"confirm_loan"
                              },
                              {
                                 "type":"postback",
                                 "title":"Savings xxx432",
-                                "payload":"confirm"
+                                "payload":"confirm_loan"
                              },
                              {
                                 "type":"postback",
                                 "title":"Savings xxx938",
-                                "payload":"confirm"
+                                "payload":"confirm_loan"
                              }
                          ]
                       }
@@ -879,58 +881,15 @@ def send_message(recipient_id, message_text):
             }
         }) 
         
-    elif "confirm" in message_text:       
-        #d1 = LoanGetter()       
+    elif "confirm_loan" in message_text:
         data = json.dumps({
             "recipient": {
                 "id": recipient_id
             },
             "message": {
-                "attachment":{
-                  "type":"template",
-                  "payload":{
-                    "template_type":"generic",
-                    "elements":[
-                     {
-                         "title":"amount  CT",
-                         "buttons":[
-                             {
-                                "type":"postback",
-                                "title":"OK",
-                                "payload":"ok_approve_loan"
-                             },
-                             {
-                                "type":"postback",
-                                "title":"Cancel",
-                                "payload":"cancel"
-                             }
-                         ]
-                      }
-                    ]
-                  }
-                }
+                "text": "You have to pay $515 for 3 months"
             }
-        })
-        
-    elif "ok_approve_loan" in message_text:
-        data = json.dumps({
-            "recipient": {
-                "id": recipient_id
-            },
-            "message": {
-                "text": "thank you"
-            }
-        })    
-        
-    elif "cancel" in message_text:
-        data = json.dumps({
-            "recipient": {
-                "id": recipient_id
-            },
-            "message": {
-                "text": "thank for not ok"
-            }
-        })          
+        })     
   
     else:
         data = json.dumps({
@@ -951,7 +910,8 @@ def send_message(recipient_id, message_text):
 
     return r.status_code;
 
-def process_message(text,sender_id):       
+def process_message(text,sender_id):
+      
         text=text.lower()
         words=text.split(" ")
         print("Before GetMethod")
@@ -980,11 +940,9 @@ def process_message(text,sender_id):
                         output="balance_check" 
                     elif(w.lower()=='loan'):
                         output="loan" 
-                    elif(w.lower()=='amt_100_dollar'):   
-                        #LoanSetter(100)
-                        output="amt_100_dollar"                         
-                    elif(w.lower()=='amt_200_dollar'):                     
-                        #LoanSetter(200)
+                    elif(w.lower()=='amt_100_dollar'):
+                        output="amt_100_dollar" 
+                    elif(w.lower()=='amt_200_dollar'):
                         output="amt_200_dollar"
                     elif(w.lower()=='auto_pay'):
                         output="auto_pay"                       
@@ -996,12 +954,8 @@ def process_message(text,sender_id):
                         output="repayment_account_2"
                     elif(w.lower()=='repayment_account_3'):
                         output="repayment_account_3" 
-                    elif(w.lower()=='confirm'):
-                        output="confirm"
-                    elif(w.lower()=='ok_approve_loan'):   
-                         output="ok_approve_loan"
-                    elif(w.lower()=='cancel'): 
-                         output="cancel"                        
+                    elif(w.lower()=='confirm_loan'):
+                        output="confirm_loan"
                     elif(w.lower()=='histori' or w.lower()=='transact'):
                         if 'cancel' in str(words).lower():
                             output="transaction_receipt"
@@ -1016,12 +970,12 @@ def process_message(text,sender_id):
                         #if 'locat' in str(words).lower() or 'find' in str(words).lower() or 'search' in str(words).lower():
                           #  output="branch_locate"
                     elif(w.lower()=='login' and len(words) == 1):
-                        output="login_menu"
+                            output="login_menu"
                     elif(w.lower()=='log'):
                         if 'out' in str(words).lower():
-                            output="log_out"        
-               
-        
+                            output="log_out"
+
+                            
         send_message(sender_id, output)
 
 
