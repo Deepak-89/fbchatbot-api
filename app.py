@@ -29,7 +29,7 @@ amount = 0
 def LoanSetter(amt):
     amount = 100
 def LoanGetter():
-   return amt
+   return amount
 
 def GetMethod(strUserQuery):
     ai = apiai.ApiAI(CLIENT_ACCESS_TOKEN)
