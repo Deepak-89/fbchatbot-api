@@ -188,6 +188,15 @@ def send_message(recipient_id, message_text):
                 "id": recipient_id
             },
             "message": {
+                "text": "How may I help you?"
+            }
+        })
+    elif "loadloan" in message_text:
+        data = json.dumps({
+            "recipient": {
+                "id": recipient_id
+            },
+            "message": {
                 "attachment":{
                   "type":"template",
                   "payload":{
@@ -1085,7 +1094,7 @@ def ProcessAPIAIResponse(strResponse):
         if "APIAITransaction" in action:
             return "transaction_history"
         if "APIAILoanOption" in action:
-            return "loan"
+            return "loadloan"
         #if "APIAILoan" in action:
             #return "loan"
         return ""
