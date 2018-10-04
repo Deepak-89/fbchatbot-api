@@ -962,7 +962,7 @@ def send_message(recipient_id, message_text):
     return r.status_code;
 
 def process_message(text,sender_id): 
-        LoanSetter(100)
+       
         print(LoanGetter())
         text=text.lower()
         words=text.split(" ")
@@ -992,9 +992,11 @@ def process_message(text,sender_id):
                         output="balance_check" 
                     elif(w.lower()=='loan'):
                         output="loan" 
-                    elif(w.lower()=='amt_100_dollar'):                      
+                    elif(w.lower()=='amt_100_dollar'): 
+                         LoanSetter(100)
                         output="amt_100_dollar"                         
                     elif(w.lower()=='amt_200_dollar'):
+                          LoanSetter(200)
                         output="amt_200_dollar"
                     elif(w.lower()=='auto_pay'):
                         output="auto_pay"                       
