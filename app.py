@@ -993,9 +993,11 @@ def process_message(text,sender_id):
                         output="loan" 
                     elif(w.lower()=='amt_100_dollar'):   
                         LoanSetter(100)
+                        amount = 100
                         output="amt_100_dollar"                         
                     elif(w.lower()=='amt_200_dollar'):                     
                         LoanSetter(200)
+                        amount = 200
                         output="amt_200_dollar"
                     elif(w.lower()=='auto_pay'):
                         output="auto_pay"                       
