@@ -962,7 +962,7 @@ def send_message(recipient_id, message_text):
     return r.status_code;
 
 def process_message(text,sender_id): 
-        amount = 0
+        amt = 0
         #print(LoanGetter())
         text=text.lower()
         words=text.split(" ")
@@ -994,11 +994,11 @@ def process_message(text,sender_id):
                         output="loan" 
                     elif(w.lower()=='amt_100_dollar'):   
                         #LoanSetter(100)
-                        amount = 100
+                        amt = 100
                         output="amt_100_dollar"                         
                     elif(w.lower()=='amt_200_dollar'):                     
                         #LoanSetter(200)
-                        amount = 200
+                        amt = 200
                         output="amt_200_dollar"
                     elif(w.lower()=='auto_pay'):
                         output="auto_pay"                       
@@ -1035,7 +1035,7 @@ def process_message(text,sender_id):
                         if 'out' in str(words).lower():
                             output="log_out"
         
-        LoanSetter(amount)                    
+        LoanSetter(amt)                    
         send_message(sender_id, output)
 
 
