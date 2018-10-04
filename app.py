@@ -889,6 +889,7 @@ def send_message(recipient_id, message_text):
         
     elif "approve" in message_text:       
         d1 = LoanGetter()        
+        print d1
         data = json.dumps({
             "recipient": {
                 "id": recipient_id
