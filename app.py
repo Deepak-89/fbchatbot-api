@@ -907,7 +907,7 @@ def send_message(recipient_id, message_text):
                              {
                                 "type":"postback",
                                 "title":"OK",
-                                "payload":"okconfirm"
+                                "payload":"ok_approve_loan"
                              },
                              {
                                 "type":"postback",
@@ -922,7 +922,7 @@ def send_message(recipient_id, message_text):
             }
         })
         
-    elif "okconfirm" in message_text:
+    elif "ok_approve_loan" in message_text:
         data = json.dumps({
             "recipient": {
                 "id": recipient_id
@@ -961,9 +961,9 @@ def send_message(recipient_id, message_text):
 
     return r.status_code;
 
-def process_message(text,sender_id): 
-        amt = 0
+def process_message(text,sender_id):       
         #print(LoanGetter())
+        a = 0
         text=text.lower()
         words=text.split(" ")
         print("Before GetMethod")
@@ -994,11 +994,11 @@ def process_message(text,sender_id):
                         output="loan" 
                     elif(w.lower()=='amt_100_dollar'):   
                         #LoanSetter(100)
-                        amt = 100
+                        a = 100
                         output="amt_100_dollar"                         
                     elif(w.lower()=='amt_200_dollar'):                     
                         #LoanSetter(200)
-                        amt = 200
+                        a = 200
                         output="amt_200_dollar"
                     elif(w.lower()=='auto_pay'):
                         output="auto_pay"                       
@@ -1012,8 +1012,8 @@ def process_message(text,sender_id):
                         output="repayment_account_3" 
                     elif(w.lower()=='confirm'):
                         output="confirm"
-                    elif(w.lower()=='okconfirm'):   
-                         output="okconfirm"
+                    elif(w.lower()=='ok_approve_loan'):   
+                         output="ok_approve_loan"
                     elif(w.lower()=='cancel'): 
                          output="cancel"                        
                     elif(w.lower()=='histori' or w.lower()=='transact'):
@@ -1035,7 +1035,7 @@ def process_message(text,sender_id):
                         if 'out' in str(words).lower():
                             output="log_out"
         
-        LoanSetter(amt)                    
+        LoanSetter(a)                    
         send_message(sender_id, output)
 
 
