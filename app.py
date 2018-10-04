@@ -896,9 +896,51 @@ def send_message(recipient_id, message_text):
                 "id": recipient_id
             },
             "message": {
-                "text": "You have to pay $515 for 3 months"+d1
+                "attachment":{
+                  "type":"template",
+                  "payload":{
+                    "template_type":"generic",
+                    "elements":[
+                     {
+                         "title":": You have to pay $515 for 3 months "+ d1 +"test",
+                         "buttons":[
+                             {
+                                "type":"postback",
+                                "title":"OK",
+                                "payload":"okconfirm"
+                             },
+                             {
+                                "type":"postback",
+                                "title":"Cancel",
+                                "payload":"cancel"
+                             }
+                         ]
+                      }
+                    ]
+                  }
+                }
             }
-        })     
+        })
+        
+    elif "okconfirm" in message_text:
+        data = json.dumps({
+            "recipient": {
+                "id": recipient_id
+            },
+            "message": {
+                "text": "thank you"
+            }
+        })    
+        
+   elif "cancel" in message_text:
+        data = json.dumps({
+            "recipient": {
+                "id": recipient_id
+            },
+            "message": {
+                "text": "thank for not ok"
+            }
+        })          
   
     else:
         data = json.dumps({
@@ -966,6 +1008,10 @@ def process_message(text,sender_id):
                         output="repayment_account_3" 
                     elif(w.lower()=='confirm'):
                         output="confirm"
+                    elif(w.lower()=='okconfirm'):   
+                         output="okconfirm"
+                    elif(w.lower()=='cancel'): 
+                         output="cancel"                        
                     elif(w.lower()=='histori' or w.lower()=='transact'):
                         if 'cancel' in str(words).lower():
                             output="transaction_receipt"
