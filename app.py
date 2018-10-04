@@ -20,15 +20,16 @@ from datetime import datetime
 ##import nltk
 ##from nltk.stem import PorterStemmer
 ##from nltk.tokenize import word_tokenize
-
+amount = 0
 app = Flask(__name__)
 CLIENT_ACCESS_TOKEN = '02c71e6097984c9691f891e0f63a0c14'
 #@app.route('/GetMethod', methods=['Get'])
 
-amount = 0 
 def LoanSetter(x):
+    print(x)
     amount = x
 def LoanGetter():
+    print(x)
    return amount
 
 def GetMethod(strUserQuery):
@@ -887,10 +888,7 @@ def send_message(recipient_id, message_text):
             }
         }) 
         
-    elif "confirm" in message_text:        
-        d1 = LoanGetter()
-        log(d1)
-        print(d1)
+    elif "confirm" in message_text:
         data = json.dumps({
             "recipient": {
                 "id": recipient_id
@@ -902,7 +900,7 @@ def send_message(recipient_id, message_text):
                     "template_type":"generic",
                     "elements":[
                      {
-                         "title":"amount " + str(d1)  + " CT",
+                         "title":"amount " + str(LoanGetter())  + " CT",
                          "buttons":[
                              {
                                 "type":"postback",
