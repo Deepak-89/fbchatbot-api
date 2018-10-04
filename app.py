@@ -887,8 +887,9 @@ def send_message(recipient_id, message_text):
             }
         }) 
         
-    elif "confirm" in message_text:
+    elif "confirm" in message_text:        
         d1 = LoanGetter()
+        log(d1)
         print(d1)
         data = json.dumps({
             "recipient": {
@@ -963,8 +964,8 @@ def process_message(text,sender_id):
                         output="repayment_account_2"
                     elif(w.lower()=='repayment_account_3'):
                         output="repayment_account_3" 
-                    elif(w.lower()=='confirm_loan'):
-                        output="confirm_loan"
+                    elif(w.lower()=='confirm'):
+                        output="confirm"
                     elif(w.lower()=='histori' or w.lower()=='transact'):
                         if 'cancel' in str(words).lower():
                             output="transaction_receipt"
