@@ -943,7 +943,7 @@ def send_message(recipient_id, message_text):
                              {
                                 "type":"postback",
                                 "title":"OK",
-                                "payload":"approved_loan"
+                                "payload":"sancationed"
                              },
                              {
                                 "type":"postback",
@@ -958,7 +958,7 @@ def send_message(recipient_id, message_text):
             }
         })
         
-    elif "approved_loan" in message_text:
+    elif "sancationed" in message_text:
         data = json.dumps({
             "recipient": {
                 "id": recipient_id
@@ -1044,8 +1044,8 @@ def process_message(text,sender_id):
                         output="repayment_account_3" 
                     elif(w.lower()=='approve'):
                         output="approve"
-                    elif(w.lower()=='approved_loan'):   
-                         output="approved_loan"
+                    elif(w.lower()=='sancationed'):   
+                         output="sancationed"
                     elif(w.lower()=='cancel'): 
                          output="cancel"                        
                     elif(w.lower()=='histori' or w.lower()=='transact'):
