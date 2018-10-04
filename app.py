@@ -62,8 +62,7 @@ def verify():
 def webhook():
    
     # endpoint for processing incoming messaging events
-    data = request.get_json()
-    log(amt,'ttttt')
+    data = request.get_json() 
     log(data)  # you may not want to log every incoming message in production, but it's good for testing
 
     #if data["object"] == "page":
@@ -912,7 +911,8 @@ def send_message(recipient_id, message_text):
     return r.status_code;
 
 def process_message(text,sender_id):
-     
+     amt = 100;
+        log(amt)
         text=text.lower()
         words=text.split(" ")
         print("Before GetMethod")
