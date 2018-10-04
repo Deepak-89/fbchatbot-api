@@ -29,7 +29,7 @@ def LoanSetter(x):
     print(x)
     amount = x
 def LoanGetter():
-    print(x)
+    print(amount)
    return amount
 
 def GetMethod(strUserQuery):
