@@ -959,8 +959,7 @@ def send_message(recipient_id, message_text):
 
     return r.status_code;
 
-def process_message(text,sender_id): 
-        print(LoanGetter())
+def process_message(text,sender_id):       
         text=text.lower()
         words=text.split(" ")
         print("Before GetMethod")
