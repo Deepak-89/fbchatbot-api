@@ -902,7 +902,7 @@ def send_message(recipient_id, message_text):
                     "template_type":"generic",
                     "elements":[
                      {
-                         "title":"amount " +  d1  + " CT",
+                         "title":"amount " + str(d1)  + " CT",
                          "buttons":[
                              {
                                 "type":"postback",
