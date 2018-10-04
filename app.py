@@ -97,8 +97,10 @@ def webhook():
 
 amount = 100
 def LoanSetter(x):  
-    print x
-    amount = x
+    if token == "100":
+    amount = 100
+    else:
+    amount = 200       
     
 def LoanGetter():  
     return amount
@@ -992,10 +994,10 @@ def process_message(text,sender_id):
                     elif(w.lower()=='loan'):
                         output="loan" 
                     elif(w.lower()=='amt_100_dollar'):   
-                        LoanSetter(100)
+                        LoanSetter('100')
                         output="amt_100_dollar"                         
                     elif(w.lower()=='amt_200_dollar'):                     
-                        LoanSetter(200)
+                        LoanSetter('200')
                         output="amt_200_dollar"
                     elif(w.lower()=='auto_pay'):
                         output="auto_pay"                       
