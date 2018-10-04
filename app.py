@@ -1088,7 +1088,7 @@ def ProcessAPIAIResponse(strResponse):
             return "loan"
         #if "APIAILoan" in action:
             #return "loan"
-        #return ""
+        return ""
     else:
         return ""
         
