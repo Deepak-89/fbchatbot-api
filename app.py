@@ -962,7 +962,7 @@ def send_message(recipient_id, message_text):
     return r.status_code;
 
 def process_message(text,sender_id): 
-        amount = 100
+        amount = 0
         #print(LoanGetter())
         text=text.lower()
         words=text.split(" ")
