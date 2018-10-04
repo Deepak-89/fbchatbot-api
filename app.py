@@ -861,17 +861,17 @@ def send_message(recipient_id, message_text):
                              {
                                 "type":"postback",
                                 "title":"Savings xxx438",
-                                "payload":"confirm_loan"
+                                "payload":"approve"
                              },
                              {
                                 "type":"postback",
                                 "title":"Savings xxx432",
-                                "payload":"confirm_loan"
+                                "payload":"approve"
                              },
                              {
                                 "type":"postback",
                                 "title":"Savings xxx938",
-                                "payload":"confirm_loan"
+                                "payload":"approve"
                              }
                          ]
                       }
