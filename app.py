@@ -22,6 +22,7 @@ from datetime import datetime
 ##from nltk.tokenize import word_tokenize
 
 app = Flask(__name__)
+amt = 100
 CLIENT_ACCESS_TOKEN = '02c71e6097984c9691f891e0f63a0c14'
 #@app.route('/GetMethod', methods=['Get'])
 def GetMethod(strUserQuery):
@@ -911,7 +912,8 @@ def send_message(recipient_id, message_text):
     return r.status_code;
 
 def process_message(text,sender_id):
-      
+        log(amt)
+        print (amt)
         text=text.lower()
         words=text.split(" ")
         print("Before GetMethod")
@@ -941,7 +943,11 @@ def process_message(text,sender_id):
                     elif(w.lower()=='loan'):
                         output="loan" 
                     elif(w.lower()=='amt_100_dollar'):
+                         log(amt)
+                         amt = 200
+                        print (amt)
                         output="amt_100_dollar" 
+                        
                     elif(w.lower()=='amt_200_dollar'):
                         output="amt_200_dollar"
                     elif(w.lower()=='auto_pay'):
