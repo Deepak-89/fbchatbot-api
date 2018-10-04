@@ -867,17 +867,17 @@ def send_message(recipient_id, message_text):
                              {
                                 "type":"postback",
                                 "title":"Savings xxx438",
-                                "payload":"confirm_loan"
+                                "payload":"confirm"
                              },
                              {
                                 "type":"postback",
                                 "title":"Savings xxx432",
-                                "payload":"confirm_loan"
+                                "payload":"confirm"
                              },
                              {
                                 "type":"postback",
                                 "title":"Savings xxx938",
-                                "payload":"confirm_loan"
+                                "payload":"confirm"
                              }
                          ]
                       }
@@ -887,7 +887,9 @@ def send_message(recipient_id, message_text):
             }
         }) 
         
-    elif "confirm_loan" in message_text:
+    elif "confirm" in message_text:
+        d1 = LoanGetter()
+        print(d1)
         data = json.dumps({
             "recipient": {
                 "id": recipient_id
