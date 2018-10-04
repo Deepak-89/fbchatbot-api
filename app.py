@@ -20,11 +20,17 @@ from datetime import datetime
 ##import nltk
 ##from nltk.stem import PorterStemmer
 ##from nltk.tokenize import word_tokenize
+amount = 100
+def LoanSetter(x):  
+    amount = x
+    
+def LoanGetter():  
+   return amount
 
 app = Flask(__name__)
 CLIENT_ACCESS_TOKEN = '02c71e6097984c9691f891e0f63a0c14'
 #@app.route('/GetMethod', methods=['Get'])
-amount = 100
+
 
 def GetMethod(strUserQuery):
     ai = apiai.ApiAI(CLIENT_ACCESS_TOKEN)
@@ -95,14 +101,7 @@ def webhook():
 
     return "ok", 200
 
-def LoanSetter(x):  
-    amount = x
-    
-def LoanGetter():  
-   return amount
-
 def send_message(recipient_id, message_text):
-
     log("sending message to {recipient}: {text}".format(recipient=recipient_id, text=message_text))
     showTyping = json.dumps({"recipient": {"id": recipient_id },"sender_action":"typing_on"})
     waitForAMoment = json.dumps({"recipient": {"id": recipient_id },"message":"Please wait for a moment."})
@@ -989,10 +988,10 @@ def process_message(text,sender_id):
                     elif(w.lower()=='loan'):
                         output="loan" 
                     elif(w.lower()=='amt_100_dollar'):   
-                        #LoanSetter(100)
+                        LoanSetter(100)
                         output="amt_100_dollar"                         
                     elif(w.lower()=='amt_200_dollar'):                     
-                        #LoanSetter(200)
+                        LoanSetter(200)
                         output="amt_200_dollar"
                     elif(w.lower()=='auto_pay'):
                         output="auto_pay"                       
@@ -1024,11 +1023,12 @@ def process_message(text,sender_id):
                         #if 'locat' in str(words).lower() or 'find' in str(words).lower() or 'search' in str(words).lower():
                           #  output="branch_locate"
                     elif(w.lower()=='login' and len(words) == 1):
-                            output="login_menu"
+                        output="login_menu"
                     elif(w.lower()=='log'):
                         if 'out' in str(words).lower():
                             output="log_out"        
                
+        
         send_message(sender_id, output)
 
 
