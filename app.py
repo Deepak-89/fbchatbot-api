@@ -26,8 +26,8 @@ CLIENT_ACCESS_TOKEN = '02c71e6097984c9691f891e0f63a0c14'
 #@app.route('/GetMethod', methods=['Get'])
 
 amount = 0 
-def LoanSetter(amt):
-    amount = 100
+def LoanSetter(x):
+    amount = x
 def LoanGetter():
    return amount
 
@@ -962,7 +962,6 @@ def send_message(recipient_id, message_text):
     return r.status_code;
 
 def process_message(text,sender_id): 
-       
         print(LoanGetter())
         text=text.lower()
         words=text.split(" ")
@@ -993,10 +992,10 @@ def process_message(text,sender_id):
                     elif(w.lower()=='loan'):
                         output="loan" 
                     elif(w.lower()=='amt_100_dollar'): 
-                         LoanSetter(100)
+                        LoanSetter(100)
                         output="amt_100_dollar"                         
                     elif(w.lower()=='amt_200_dollar'):
-                          LoanSetter(200)
+                        LoanSetter(200)
                         output="amt_200_dollar"
                     elif(w.lower()=='auto_pay'):
                         output="auto_pay"                       
