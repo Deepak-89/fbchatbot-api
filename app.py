@@ -25,11 +25,10 @@ app = Flask(__name__)
 CLIENT_ACCESS_TOKEN = '02c71e6097984c9691f891e0f63a0c14'
 #@app.route('/GetMethod', methods=['Get'])
 
-def LoanSetter(x):
-    print(x)
+def LoanSetter(x):  
     amount = x
-def LoanGetter():
-    print(amount)
+    
+def LoanGetter():  
    return amount
 
 def GetMethod(strUserQuery):
@@ -889,7 +888,9 @@ def send_message(recipient_id, message_text):
         }) 
         
     elif "confirm" in message_text:
+       
         d1 = LoanGetter()
+        
         data = json.dumps({
             "recipient": {
                 "id": recipient_id
@@ -994,7 +995,7 @@ def process_message(text,sender_id):
                         LoanSetter(100)
                         output="amt_100_dollar"                         
                     elif(w.lower()=='amt_200_dollar'):                     
-                        LoanSetter(100)
+                        LoanSetter(200)
                         output="amt_200_dollar"
                     elif(w.lower()=='auto_pay'):
                         output="auto_pay"                       
