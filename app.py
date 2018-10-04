@@ -20,10 +20,17 @@ from datetime import datetime
 ##import nltk
 ##from nltk.stem import PorterStemmer
 ##from nltk.tokenize import word_tokenize
-
+amount = 100
 app = Flask(__name__)
 CLIENT_ACCESS_TOKEN = '02c71e6097984c9691f891e0f63a0c14'
 #@app.route('/GetMethod', methods=['Get'])
+
+def LoanSetter(x):  
+    amount = x
+    
+def LoanGetter():  
+   return amount
+
 def GetMethod(strUserQuery):
     ai = apiai.ApiAI(CLIENT_ACCESS_TOKEN)
 
@@ -61,8 +68,7 @@ def verify():
 def webhook():
    
     # endpoint for processing incoming messaging events
-    data = request.get_json()
-
+    data = request.get_json() 
     log(data)  # you may not want to log every incoming message in production, but it's good for testing
 
     #if data["object"] == "page":
@@ -882,14 +888,59 @@ def send_message(recipient_id, message_text):
         }) 
         
     elif "approve" in message_text:
+       
+        d1 = LoanGetter()
+        
         data = json.dumps({
             "recipient": {
                 "id": recipient_id
             },
             "message": {
-                "text": "You have to pay $515 for 3 months"
+                "attachment":{
+                  "type":"template",
+                  "payload":{
+                    "template_type":"generic",
+                    "elements":[
+                     {
+                         "title":"amount " + str(d1)  + " CT",
+                         "buttons":[
+                             {
+                                "type":"postback",
+                                "title":"OK",
+                                "payload":"ok_confirm_loan"
+                             },
+                             {
+                                "type":"postback",
+                                "title":"Cancel",
+                                "payload":"cancel"
+                             }
+                         ]
+                      }
+                    ]
+                  }
+                }
             }
-        })     
+        })
+        
+    elif "ok_confirm_loan" in message_text:
+        data = json.dumps({
+            "recipient": {
+                "id": recipient_id
+            },
+            "message": {
+                "text": "thank you"
+            }
+        })    
+        
+    elif "cancel" in message_text:
+        data = json.dumps({
+            "recipient": {
+                "id": recipient_id
+            },
+            "message": {
+                "text": "thank for not ok"
+            }
+        })          
   
     else:
         data = json.dumps({
@@ -910,8 +961,8 @@ def send_message(recipient_id, message_text):
 
     return r.status_code;
 
-def process_message(text,sender_id):
-      
+def process_message(text,sender_id): 
+        print(LoanGetter())
         text=text.lower()
         words=text.split(" ")
         print("Before GetMethod")
@@ -940,9 +991,11 @@ def process_message(text,sender_id):
                         output="balance_check" 
                     elif(w.lower()=='loan'):
                         output="loan" 
-                    elif(w.lower()=='amt_100_dollar'):
-                        output="amt_100_dollar" 
-                    elif(w.lower()=='amt_200_dollar'):
+                    elif(w.lower()=='amt_100_dollar'):   
+                        LoanSetter(100)
+                        output="amt_100_dollar"                         
+                    elif(w.lower()=='amt_200_dollar'):                     
+                        LoanSetter(200)
                         output="amt_200_dollar"
                     elif(w.lower()=='auto_pay'):
                         output="auto_pay"                       
@@ -956,6 +1009,10 @@ def process_message(text,sender_id):
                         output="repayment_account_3" 
                     elif(w.lower()=='approve'):
                         output="approve"
+                    elif(w.lower()=='ok_confirm_loan'):   
+                         output="ok_confirm_loan"
+                    elif(w.lower()=='cancel'): 
+                         output="cancel"                        
                     elif(w.lower()=='histori' or w.lower()=='transact'):
                         if 'cancel' in str(words).lower():
                             output="transaction_receipt"
@@ -1008,4 +1065,3 @@ def log(message):  # simple wrapper for logging to stdout on heroku
 
 if __name__ == '__main__':
     app.run(debug=True)
-    
