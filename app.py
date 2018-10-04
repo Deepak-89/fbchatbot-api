@@ -24,9 +24,12 @@ from datetime import datetime
 app = Flask(__name__)
 CLIENT_ACCESS_TOKEN = '02c71e6097984c9691f891e0f63a0c14'
 #@app.route('/GetMethod', methods=['Get'])
-def LoanSetter():
-    amt = 100
-    return amt;
+
+amount = 0 
+def LoanSetter(amt):
+    amount = 100
+def LoanGetter():
+   return amt
 
 def GetMethod(strUserQuery):
     ai = apiai.ApiAI(CLIENT_ACCESS_TOKEN)
@@ -913,7 +916,9 @@ def send_message(recipient_id, message_text):
 
     return r.status_code;
 
-def process_message(text,sender_id):    
+def process_message(text,sender_id): 
+        LoanSetter(100)
+        print(LoanGetter())
         text=text.lower()
         words=text.split(" ")
         print("Before GetMethod")
