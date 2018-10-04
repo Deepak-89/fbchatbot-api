@@ -825,17 +825,22 @@ def send_message(recipient_id, message_text):
                     "template_type":"generic",
                     "elements":[
                      {
-                         "title":"You have to pay $515 for 3 months,Your first loan repayment date is 15/10/2018 ",
+                         "title":"Deposit your loan funds into which account?",
                          "buttons":[
                              {
                                 "type":"postback",
-                                "title":"OK",
-                                "payload":"approved_loan"
+                                "title":"Savings xxx438",
+                                "payload":"approve"
                              },
                              {
                                 "type":"postback",
-                                "title":"Cancel",
-                                "payload":"cancel"
+                                "title":"Savings xxx432",
+                                "payload":"approve"
+                             },
+                             {
+                                "type":"postback",
+                                "title":"Savings xxx938",
+                                "payload":"approve"
                              }
                          ]
                       }
