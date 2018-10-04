@@ -763,7 +763,7 @@ def send_message(recipient_id, message_text):
                     "elements":[
                      {
                         "title":"Thanks for Showing interest in Simple Dollar Loan.",
-                        "subtitle":"You are eligible for loan up to $300",
+                        "subtitle":"You are eligible for loan up to $200",
                         "buttons":[
                           {
                             "type":"postback",
@@ -938,7 +938,7 @@ def send_message(recipient_id, message_text):
                     "template_type":"generic",
                     "elements":[
                      {
-                         "title":"You have to pay $515 for 3 months,Your first loan repayment date is 15/10/2018 ",
+                         "title":"You have to pay $212 for 3 months,Your first loan repayment date is 25/11/2018 ",
                          "buttons":[
                              {
                                 "type":"postback",
@@ -964,7 +964,7 @@ def send_message(recipient_id, message_text):
                 "id": recipient_id
             },
             "message": {
-                "text": "Your Loan is approved, Loan amount $500 will be credit to your Account Checking -3211, Thanks for choosing US bank Simple Dollar Loan"
+                "text": "congratulation! Your Loan is approved, Loan amount $200 will be credit to your Account Savings xxx438, Thanks for choosing US bank Simple Dollar Loan"
             }
         })    
         
