@@ -902,7 +902,7 @@ def send_message(recipient_id, message_text):
                     "template_type":"generic",
                     "elements":[
                      {
-                         "title":": You have to pay $515 for 3 months "+ d1 +"test",
+                         "title":"amount " +  d1  + " CT",
                          "buttons":[
                              {
                                 "type":"postback",
