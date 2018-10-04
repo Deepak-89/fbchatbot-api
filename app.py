@@ -26,6 +26,7 @@ CLIENT_ACCESS_TOKEN = '02c71e6097984c9691f891e0f63a0c14'
 #@app.route('/GetMethod', methods=['Get'])
 amount = 100
 def LoanSetter(x):  
+    print x
     amount = x
     
 def LoanGetter():  
