@@ -1,4 +1,3 @@
-
 import os
 import sys
 import json
@@ -881,7 +880,7 @@ def send_message(recipient_id, message_text):
             }
         }) 
         
-    elif "confirm_loan" in message_text:
+    elif "approve" in message_text:
         data = json.dumps({
             "recipient": {
                 "id": recipient_id
@@ -954,8 +953,8 @@ def process_message(text,sender_id):
                         output="repayment_account_2"
                     elif(w.lower()=='repayment_account_3'):
                         output="repayment_account_3" 
-                    elif(w.lower()=='confirm_loan'):
-                        output="confirm_loan"
+                    elif(w.lower()=='approve'):
+                        output="approve"
                     elif(w.lower()=='histori' or w.lower()=='transact'):
                         if 'cancel' in str(words).lower():
                             output="transaction_receipt"
@@ -1008,3 +1007,4 @@ def log(message):  # simple wrapper for logging to stdout on heroku
 
 if __name__ == '__main__':
     app.run(debug=True)
+    
