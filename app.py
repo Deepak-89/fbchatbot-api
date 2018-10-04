@@ -812,8 +812,39 @@ def send_message(recipient_id, message_text):
             }
           }
        })  
+    elif "manual_pay" in message_text:
         
-    elif "auto_pay" in message_text or "manual_pay" in message_text:
+        data = json.dumps({
+            "recipient": {
+                "id": recipient_id
+            },
+            "message": {
+                "attachment":{
+                  "type":"template",
+                  "payload":{
+                    "template_type":"generic",
+                    "elements":[
+                     {
+                         "title":"You have to pay $515 for 3 months,Your first loan repayment date is 15/10/2018 ",
+                         "buttons":[
+                             {
+                                "type":"postback",
+                                "title":"OK",
+                                "payload":"approved_loan"
+                             },
+                             {
+                                "type":"postback",
+                                "title":"Cancel",
+                                "payload":"cancel"
+                             }
+                         ]
+                      }
+                    ]
+                  }
+                }
+            }
+      })  
+    elif "auto_pay" in message_text:
         
         data = json.dumps({
             "recipient": {
@@ -902,12 +933,12 @@ def send_message(recipient_id, message_text):
                     "template_type":"generic",
                     "elements":[
                      {
-                         "title":"amount " + str(d1)  + " CT",
+                         "title":"You have to pay $515 for 3 months,Your first loan repayment date is 15/10/2018 ",
                          "buttons":[
                              {
                                 "type":"postback",
                                 "title":"OK",
-                                "payload":"ok_confirm_loan"
+                                "payload":"approved_loan"
                              },
                              {
                                 "type":"postback",
@@ -922,13 +953,13 @@ def send_message(recipient_id, message_text):
             }
         })
         
-    elif "ok_confirm_loan" in message_text:
+    elif "approved_loan" in message_text:
         data = json.dumps({
             "recipient": {
                 "id": recipient_id
             },
             "message": {
-                "text": "thank you"
+                "text": "Your Loan is approved, Loan amount $500 will be credit to your Account Checking -3211, Thanks for choosing US bank Simple Dollar Loan"
             }
         })    
         
@@ -938,7 +969,7 @@ def send_message(recipient_id, message_text):
                 "id": recipient_id
             },
             "message": {
-                "text": "thank for not ok"
+                "text": "Thank You"
             }
         })          
   
@@ -1008,8 +1039,8 @@ def process_message(text,sender_id):
                         output="repayment_account_3" 
                     elif(w.lower()=='approve'):
                         output="approve"
-                    elif(w.lower()=='ok_confirm_loan'):   
-                         output="ok_confirm_loan"
+                    elif(w.lower()=='approved_loan'):   
+                         output="approved_loan"
                     elif(w.lower()=='cancel'): 
                          output="cancel"                        
                     elif(w.lower()=='histori' or w.lower()=='transact'):
