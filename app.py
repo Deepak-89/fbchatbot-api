@@ -909,9 +909,7 @@ def send_message(recipient_id, message_text):
 
     return r.status_code;
 
-def process_message(text,sender_id):
-     amt = 100;
-        log(amt)
+def process_message(text,sender_id):    
         text=text.lower()
         words=text.split(" ")
         print("Before GetMethod")
