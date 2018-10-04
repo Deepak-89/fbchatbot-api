@@ -896,7 +896,7 @@ def send_message(recipient_id, message_text):
                 "id": recipient_id
             },
             "message": {
-                "text": "You have to pay $515 for 3 months"
+                "text": "You have to pay $515 for 3 months"+d1
             }
         })     
   
