@@ -20,12 +20,11 @@ from datetime import datetime
 ##import nltk
 ##from nltk.stem import PorterStemmer
 ##from nltk.tokenize import word_tokenize
-amount = 100
+
 app = Flask(__name__)
 CLIENT_ACCESS_TOKEN = '02c71e6097984c9691f891e0f63a0c14'
 #@app.route('/GetMethod', methods=['Get'])
-
-
+amount = 100
 
 def GetMethod(strUserQuery):
     ai = apiai.ApiAI(CLIENT_ACCESS_TOKEN)
@@ -964,7 +963,6 @@ def send_message(recipient_id, message_text):
     return r.status_code;
 
 def process_message(text,sender_id):       
-        #print(LoanGetter())
         text=text.lower()
         words=text.split(" ")
         print("Before GetMethod")
@@ -1032,8 +1030,7 @@ def process_message(text,sender_id):
                             output="login_menu"
                     elif(w.lower()=='log'):
                         if 'out' in str(words).lower():
-                            output="log_out"
-        
+                            output="log_out"        
                
         send_message(sender_id, output)
 
