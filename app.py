@@ -208,7 +208,7 @@ def send_message(recipient_id, message_text):
                             "buttons":[
                               {
                                 "type":"postback",
-                                "title":"Simple Loan",
+                                "title":"Simple Dollar Loan",
                                 "payload":"loan"
                               },
                               {
@@ -838,17 +838,17 @@ def send_message(recipient_id, message_text):
                          "buttons":[
                              {
                                 "type":"postback",
-                                "title":"Savings xxx438",
+                                "title":"Savings xxx438: $15,382.57",
                                 "payload":"approve"
                              },
                              {
                                 "type":"postback",
-                                "title":"Savings xxx432",
+                                "title":"Savings xxx432: $11,382.57",
                                 "payload":"approve"
                              },
                              {
                                 "type":"postback",
-                                "title":"Savings xxx938",
+                                "title":"Savings xxx938: $8,382.57",
                                 "payload":"approve"
                              }
                          ]
@@ -912,17 +912,17 @@ def send_message(recipient_id, message_text):
                          "buttons":[
                              {
                                 "type":"postback",
-                                "title":"Savings xxx438",
+                                "title":"Savings xxx438: $15,382.57",
                                 "payload":"approve"
                              },
                              {
                                 "type":"postback",
-                                "title":"Savings xxx432",
+                                "title":"Savings xxx432: $11,382.57",
                                 "payload":"approve"
                              },
                              {
                                 "type":"postback",
-                                "title":"Savings xxx938",
+                                "title":"Savings xxx938: $8,382.57",
                                 "payload":"approve"
                              }
                          ]
@@ -973,7 +973,7 @@ def send_message(recipient_id, message_text):
                 "id": recipient_id
             },
             "message": {
-                "text": "Congratulation! Your Loan is approved, Loan amount $200 will be credit to your Account Savings xxx438, Thanks for choosing US bank Simple Dollar Loan"
+                "text": "Congratulation! Your Loan is approved, Loan amount $200 will be credit to your Account Savings xxx438: $15,582.57, Thanks for choosing US bank Simple Dollar Loan"
             }
         })    
         
