@@ -187,8 +187,25 @@ def send_message(recipient_id, message_text):
             "recipient": {
                 "id": recipient_id
             },
-            "message": {
-                "text": "How may I help you?"
+            "message":{
+              "attachment":{
+                 "type":"template",
+                  "payload":{
+                     "template_type":"generic",
+                     "elements":[
+                      {
+                          "title":"How may I help you?",
+                          "subtitle":"If you are an existing client, please login.",
+                          "buttons":[
+                             {
+                                "type":"account_link",
+                                "url":"https://usblogin.herokuapp.com/login.php",
+                             }
+                         ]
+                      }
+                    ]
+                  }
+              }
             }
         })
     elif "loadloan" in message_text:
@@ -838,17 +855,17 @@ def send_message(recipient_id, message_text):
                          "buttons":[
                              {
                                 "type":"postback",
-                                "title":"Savings xxx438: $15,382.57",
+                                "title":"Savings xxx438: $15.57",
                                 "payload":"approve"
                              },
                              {
                                 "type":"postback",
-                                "title":"Savings xxx432: $11,382.57",
+                                "title":"Savings xxx432: $113.57",
                                 "payload":"approve"
                              },
                              {
                                 "type":"postback",
-                                "title":"Savings xxx938: $8,382.57",
+                                "title":"Savings xxx938: $82.57",
                                 "payload":"approve"
                              }
                          ]
@@ -875,17 +892,17 @@ def send_message(recipient_id, message_text):
                          "buttons":[
                              {
                                 "type":"postback",
-                                "title":"Savings xxx438: $15,382.57",
+                                "title":"Savings xxx438: $15.57",
                                 "payload":"repayment_account_1"
                              },
                              {
                                 "type":"postback",
-                                "title":"Savings xxx432: $11,382.57",
+                                "title":"Savings xxx432: $113.57",
                                 "payload":"repayment_account_2"
                              },
                              {
                                 "type":"postback",
-                                "title":"Savings xxx938: $8,382.57",
+                                "title":"Savings xxx938: $82.57",
                                 "payload":"repayment_account_3"
                              }
                          ]
@@ -912,17 +929,17 @@ def send_message(recipient_id, message_text):
                          "buttons":[
                              {
                                 "type":"postback",
-                                "title":"Savings xxx438: $15,382.57",
+                                "title":"Savings xxx438: $15.57",
                                 "payload":"approve"
                              },
                              {
                                 "type":"postback",
-                                "title":"Savings xxx432: $11,382.57",
+                                "title":"Savings xxx432: $113.57",
                                 "payload":"approve"
                              },
                              {
                                 "type":"postback",
-                                "title":"Savings xxx938: $8,382.57",
+                                "title":"Savings xxx938: $82.57",
                                 "payload":"approve"
                              }
                          ]
@@ -947,7 +964,7 @@ def send_message(recipient_id, message_text):
                     "template_type":"generic",
                     "elements":[
                      {
-                         "title":"You have to pay $212 for 3 months,Your first loan repayment date is 25/11/2018"+" "+"Automatic payments will be debited from Savings xxx438."+" "+" Please confirm to proceed further.",
+                         "title":"You have to pay $215 for 3 months,Your first loan repayment date is 25/11/2018"+" "+"Automatic payments will be debited from Savings xxx438."+" "+" Please confirm to proceed further.",
                          "buttons":[
                              {
                                 "type":"postback",
@@ -973,7 +990,7 @@ def send_message(recipient_id, message_text):
                 "id": recipient_id
             },
             "message": {
-                "text": "Congratulation! Your Loan is approved, Loan amount $200 will be credit to your Account Savings xxx438: $15,582.57, Thanks for choosing US bank Simple Dollar Loan"
+                "text": "Congratulation! Your Loan is approved, Loan amount $200 will be credit to your Account Savings xxx438: $215.57, Thanks for choosing US bank Simple Dollar Loan"
             }
         })    
         
