@@ -875,17 +875,17 @@ def send_message(recipient_id, message_text):
                          "buttons":[
                              {
                                 "type":"postback",
-                                "title":"Savings xxx438",
+                                "title":"Savings xxx438: $15,382.57",
                                 "payload":"repayment_account_1"
                              },
                              {
                                 "type":"postback",
-                                "title":"Savings xxx432",
+                                "title":"Savings xxx432: $11,382.57",
                                 "payload":"repayment_account_2"
                              },
                              {
                                 "type":"postback",
-                                "title":"Savings xxx938",
+                                "title":"Savings xxx938: $8,382.57",
                                 "payload":"repayment_account_3"
                              }
                          ]
