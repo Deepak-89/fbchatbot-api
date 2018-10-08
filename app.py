@@ -1000,7 +1000,7 @@ def send_message(recipient_id, message_text):
                 "id": recipient_id
             },
             "message": {
-                "text": "Thank You"
+                "text": "Thank You "
             }
         })          
   
